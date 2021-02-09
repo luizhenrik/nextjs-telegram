@@ -1,8 +1,10 @@
-import Head from 'next/head'
 import Css_Home from '../styles/Home.module.scss'
-import HeaderApp from '../components/header'
+
+import Cpt_header_search from '../components/header/header_search'
+import Cpt_MenuBurger from '../components/menuBurger';
+
+import Head from 'next/head'
 import Link from 'next/link'
-import MenuBurger from '../components/menuBurger';
 
 export default function Home() {
     let jsonHeader = {
@@ -29,9 +31,9 @@ export default function Home() {
             </Head>
             
             <main className={Css_Home.main}>
-                <HeaderApp database={jsonHeader}></HeaderApp>
+                <Cpt_header_search></Cpt_header_search>
 
-                <MenuBurger></MenuBurger>
+                <Cpt_MenuBurger></Cpt_MenuBurger>
 
                 <div className={Css_Home.content}>
                     <Link href={'/messages/message'}>

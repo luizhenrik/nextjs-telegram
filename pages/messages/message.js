@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
-
 import Css_Home from '../../styles/Home.module.scss'
-import HeaderApp from '../../components/header'
+
+import Cpt_header_chat from '../../components/header/header_chat'
 
 export default function Message() {
         let jsonHeader = {
@@ -35,6 +35,7 @@ export default function Message() {
                 }
             }
         };
+
         return (
             <div className={Css_Home.container}>
                 <Head>
@@ -42,7 +43,7 @@ export default function Message() {
                 </Head>
                 
                 <main className={Css_Home.main}>
-                    <HeaderApp database={jsonHeader}></HeaderApp>
+                    <Cpt_header_chat data={jsonHeader}></Cpt_header_chat>
 
                     <div className={Css_Home.content}></div>
                 </main>
