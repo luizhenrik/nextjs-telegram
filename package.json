@@ -1,0 +1,19 @@
+{
+  "name": "nextjs-telegram",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "classname": "0.0.0",
+    "classnames": "^2.2.6",
+    "next": "10.0.6",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "sass": "^1.32.6"
+  }
+}
