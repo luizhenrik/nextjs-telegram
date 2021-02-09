@@ -31,7 +31,7 @@ export default function Home() {
             <main className={Css_Home.main}>
                 <HeaderApp database={jsonHeader}></HeaderApp>
 
-                <MenuBurger database={jsonBurger}></MenuBurger>
+                <MenuBurger></MenuBurger>
 
                 <div className={Css_Home.content}>
                     <Link href={'/messages/message'}>
