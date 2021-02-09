@@ -1,3 +1,3 @@
-function list() {
+export default function list() {
     return false;
 }
