@@ -7,22 +7,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 export default function Home() {
-    let jsonHeader = {
-        "mode": "search", // user/search/menu
-        "messages": {
-            0: {
-                "date": 1234,
-                "nickname": "José",
-                "user_avatar": "/images/user.png",
-                "text": "texto da mensagem"
-            }
-        }
-    };
-
-    let jsonBurger = {
-        "opened": false
-    };
-
+    // console.log(pageProps);
     return (
         <div className={Css_Home.container}>
             <Head>

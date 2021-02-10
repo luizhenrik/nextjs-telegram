@@ -1,0 +1,3 @@
+{
+    menuBurger_isOpen: false
+}

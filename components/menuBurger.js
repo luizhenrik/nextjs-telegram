@@ -15,3 +15,14 @@ export default function menuBurger() {
         </>
     )
 }
+
+export async function getStaticProps() {
+    const res = await fetch('https://xirrim.com/api/basic')
+    const posts = await res.json()
+
+    return {
+        props: {
+            menuBurger_isOpen: false
+        }, // will be passed to the page component as props
+    }
+}
