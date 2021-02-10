@@ -8,7 +8,7 @@ export default function Header_search() {
             <header className={`${Css_header.header}`}>
                 <Link href={''}>
                     <a className={`${Css_header.header__handler}`}>
-                        <i className={`fas fa-bars`}></i>
+                        <i className={`fas fa-arrow-left`}></i>
                     </a>
                 </Link>
                 <div className={`${Css_header.header__container}`}>

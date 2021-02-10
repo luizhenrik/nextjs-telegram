@@ -1,63 +1,24 @@
-import Css_headerApp from '../components/header/header.module.scss';
+import Css_header from '../../components/header/header.module.scss';
 
 import Link from 'next/link'
-import Image from 'next/image'
 
 export default function Header({children, database}) {
     return (
         <>
-            <header className={`${Css_headerApp.header}`}>
-                {database.mode == "search" ? (
+            <header className={`${Css_header.header}`}>
                     <Link href={''}>
-                        <a className={`${Css_headerApp.header__handler}`}>
+                        <a className={`${Css_header.header__handler}`}>
                             <span className={`fas fa-bars`}></span>
                         </a>
                     </Link>
-                ) : (
-                    <Link href={'/'}>
-                        <a className={`${Css_headerApp.header__handler}`}>
-                            <span className={`fas fa-arrow-left`}></span>
+                    <div className={`${Css_header.header__container}`}>
+                        <div className={`${Css_header.header__container}`}>
+                            <h3 className={`${Css_header.header__title}`}>{`Xirrim`}</h3>
+                        </div>
+
+                        <a className={`${Css_header.header__handler}`}>
+                            <span className={`fas fa-search`}></span>
                         </a>
-                    </Link>
-                )}
-                <div className={`${Css_headerApp.header__container}`}>
-                    {database.mode == "search" ? (
-                        <input className={`${Css_headerApp.header__field}`} placeholder={'Buscar'}></input>
-                    ):(
-                        <>
-                            <Link href={'users/profile'}>
-                                {database.container.avatar.status ? (
-                                    <Image
-                                        src={database.container.avatar.src}
-                                        alt={database.container.title}
-                                        width={database.container.avatar.width}
-                                        height={database.container.avatar.height}
-                                        className={`${Css_headerApp.header__image}`}
-                                    />
-                                ) : (" ")}
-                            </Link>
-                            
-                            <div className={`${Css_headerApp.header__container}`}>
-                                <h3 className={`${Css_headerApp.header__title}`}>{database.container.title}</h3>
-
-                                {database.container.description.status ? (
-                                    <span className={`${Css_headerApp.header__description}`}>{database.container.description.text}</span>
-                                ) : (" ")}
-                            </div>
-
-                            <a className={`${Css_headerApp.header__handler}`}>
-                                <span className={`fas fa-search`}></span>
-                            </a>
-                            
-                            <a className={`${Css_headerApp.header__handler}`}>
-                                <span className={`fas fa-phone-alt`}></span>
-                            </a>
-                            
-                            <a className={`${Css_headerApp.header__handler}`}>
-                                <span className={`fas fa-ellipsis-v`}></span>
-                            </a>
-                        </>
-                    )}
                 </div>
             </header>
         </>
