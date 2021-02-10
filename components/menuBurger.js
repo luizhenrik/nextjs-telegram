@@ -1,7 +1,7 @@
 import Css_menuBurger from '../components/menuBurger.module.scss';
 
-export default function menuBurger() {
-
+function menuBurger({data}) {
+console.log(data);
     return (
         <>
             <div className={`${Css_menuBurger.menuBurger}`}>
@@ -18,11 +18,15 @@ export default function menuBurger() {
 
 export async function getStaticProps() {
     const res = await fetch('https://xirrim.com/api/basic')
-    const posts = await res.json()
+    const data = await res.json()
+
+    console.log('r', data);
 
     return {
         props: {
-            menuBurger_isOpen: false
-        }, // will be passed to the page component as props
+            data
+        },
     }
 }
+
+export default menuBurger;

@@ -1,5 +1,7 @@
-export default (req, res) => {
-    res.status(200).json({ 
-        menuBurger_isOpen: false
+async function api_basic(request, response) {
+    response.json({
+        menuBurger_isOpen: true
     })
 }
+
+export default api_basic
