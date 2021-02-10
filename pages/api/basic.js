@@ -1,6 +1,6 @@
 async function api_basic(request, response) {
     response.json({
-        menuBurger_isOpen: true
+        menuBurger_isOpen: false
     })
 }
 

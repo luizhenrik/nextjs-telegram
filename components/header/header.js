@@ -2,12 +2,16 @@ import Css_header from '../../components/header/header.module.scss';
 
 import Link from 'next/link'
 
-export default function Header({children, database}) {
+function test(e) {
+    e = true;
+}
+
+export default function Header({open_menuBurger}) {
     return (
         <>
             <header className={`${Css_header.header}`}>
-                    <Link href={''}>
-                        <a className={`${Css_header.header__handler}`}>
+                    <Link href={'#'}>
+                        <a className={`${Css_header.header__handler}`} onClick={test(open_menuBurger)}>
                             <span className={`fas fa-bars`}></span>
                         </a>
                     </Link>
@@ -24,3 +28,4 @@ export default function Header({children, database}) {
         </>
     )
 }
+

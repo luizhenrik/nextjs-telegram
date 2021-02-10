@@ -7,7 +7,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 export default function Home() {
-    // console.log(pageProps);
     return (
         <div className={Css_Home.container}>
             <Head>
@@ -16,9 +15,9 @@ export default function Home() {
             </Head>
             
             <main className={Css_Home.main}>
-                <Cpt_header></Cpt_header>
+                <Cpt_header open_menuBurger></Cpt_header>
 
-                <Cpt_MenuBurger></Cpt_MenuBurger>
+                <Cpt_MenuBurger open_menuBurger></Cpt_MenuBurger>
 
                 <div className={Css_Home.content}>
                     <Link href={'/messages/message'}>
@@ -29,3 +28,15 @@ export default function Home() {
         </div>
     )
 }
+
+export async function getStaticProps(context) {
+    const res = await fetch('https://xirrim.com/api/basic')
+    const data = await res.json()
+  
+    return {
+        props: {
+            open_menuBurger: data.menuBurger_isOpen
+        },
+        revalidate: 1
+    }
+  }
