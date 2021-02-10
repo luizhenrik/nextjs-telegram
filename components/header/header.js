@@ -2,16 +2,22 @@ import Css_header from '../../components/header/header.module.scss';
 
 import Link from 'next/link'
 
-function test(e) {
-    e = true;
-}
+import React, { useState, useContext } from 'react';
+import {MenuContext} from '../../contexts/menu'
 
-export default function Header({open_menuBurger}) {
+export default function Header() {
+
+    const { isOpen, set_isOpen } = useContext(MenuContext);
+    
+    let handlerClick = () => {
+        set_isOpen(!isOpen);
+    }
+
     return (
         <>
             <header className={`${Css_header.header}`}>
                     <Link href={'#'}>
-                        <a className={`${Css_header.header__handler}`} onClick={test(open_menuBurger)}>
+                        <a className={`${Css_header.header__handler}`} onClick={handlerClick}>
                             <span className={`fas fa-bars`}></span>
                         </a>
                     </Link>
