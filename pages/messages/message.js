@@ -3,6 +3,10 @@ import Head from 'next/head'
 import Css_Home from '../../styles/Home.module.scss'
 
 import Cpt_header_chat from '../../components/header/header_chat'
+import Cpt_header_search from '../../components/header/header_search'
+
+import {SearchContext} from '../../contexts/search'
+import React, { useState, useContext } from 'react';
 
 export default function Message() {
         let jsonHeader = {
@@ -36,6 +40,8 @@ export default function Message() {
             }
         };
 
+        const { isOpen_search } = useContext(SearchContext);
+
         return (
             <div className={Css_Home.container}>
                 <Head>
@@ -43,7 +49,11 @@ export default function Message() {
                 </Head>
                 
                 <main className={Css_Home.main}>
-                    <Cpt_header_chat data={jsonHeader}></Cpt_header_chat>
+                    {isOpen_search ? (
+                        <Cpt_header_search></Cpt_header_search>
+                    ) : (
+                        <Cpt_header_chat data={jsonHeader}></Cpt_header_chat>
+                    )}
 
                     <div className={Css_Home.content}></div>
                 </main>

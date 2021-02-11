@@ -1,9 +1,18 @@
 import Css_headerApp from '../../components/header/header.module.scss';
 
+import {SearchContext} from '../../contexts/search'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import React, { useState, useContext } from 'react';
 
 export default function Header_chat({data}){
+    const { isOpen_search, set_isOpen_search } = useContext(SearchContext);
+
+    let handlerSearch = () => {
+        set_isOpen_search(!isOpen_search);
+    }
+
     return (
         <>
             <header className={`${Css_headerApp.header}`}>
@@ -33,9 +42,11 @@ export default function Header_chat({data}){
                         ) : (" ")}
                     </div>
 
-                    <a className={`${Css_headerApp.header__handler}`}>
-                        <span className={`fas fa-search`}></span>
-                    </a>
+                    <Link href={''}>
+                        <a className={`${Css_headerApp.header__handler}`} onClick={handlerSearch}>
+                            <span className={`fas fa-search`}></span>
+                        </a>
+                    </Link>
                     
                     <a className={`${Css_headerApp.header__handler}`}>
                         <span className={`fas fa-phone-alt`}></span>
