@@ -1,14 +1,14 @@
+import style from '../styles/Home.module.scss'
+
 import Head from 'next/head'
+import React, { useState, useContext } from 'react'
 
-import Css_Home from '../../styles/Home.module.scss'
+import HeaderChat from '../components/header/views/headerChat'
+import HeaderSearch from '../components/header/views/headerSearch'
 
-import Cpt_header_chat from '../../components/header/header_chat'
-import Cpt_header_search from '../../components/header/header_search'
+import {SearchContext} from '../contexts/search'
 
-import {SearchContext} from '../../contexts/search'
-import React, { useState, useContext } from 'react';
-
-export default function Message() {
+export default function Chat() {
         let jsonHeader = {
             "mode": "user", // user/search/menu
             "container": {
@@ -40,22 +40,22 @@ export default function Message() {
             }
         };
 
-        const { isOpen_search } = useContext(SearchContext);
+        const { searchOpen } = useContext(SearchContext);
 
         return (
-            <div className={Css_Home.container}>
+            <div className={style.container}>
                 <Head>
                     <title>Conversa com user</title>
                 </Head>
                 
-                <main className={Css_Home.main}>
-                    {isOpen_search ? (
-                        <Cpt_header_search></Cpt_header_search>
+                <main className={style.main}>
+                    {searchOpen ? (
+                        <HeaderSearch></HeaderSearch>
                     ) : (
-                        <Cpt_header_chat data={jsonHeader}></Cpt_header_chat>
+                        <HeaderChat data={jsonHeader}></HeaderChat>
                     )}
 
-                    <div className={Css_Home.content}></div>
+                    <div className={style.content}></div>
                 </main>
             </div>
         )

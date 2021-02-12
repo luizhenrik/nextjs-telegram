@@ -1,41 +1,40 @@
-import Css_Home from '../styles/Home.module.scss'
-
-import Cpt_header from '../components/header/header'
-import Cpt_header_search from '../components/header/header_search'
-import Cpt_MenuBurger from '../components/menuBurger';
-
-import {MenuProvider} from '../contexts/menu'
-
-import {SearchContext} from '../contexts/search'
+import style from '../styles/Home.module.scss'
 
 import Head from 'next/head'
 import Link from 'next/link'
 import React, { useState, useContext } from 'react';
 
+import Header from '../components/header/views/header'
+import HeaderSearch from '../components/header/views/headerSearch'
+import Sidebar from '../components/sidebar/views/sidebar';
+
+import {SidebarProvider} from '../contexts/sidebar'
+import {SearchContext} from '../contexts/search'
+
 export default function Home() {
 
-    const { isOpen_search } = useContext(SearchContext);
+    const { searchOpen } = useContext(SearchContext);
 
     
     return (
-        <div className={Css_Home.container}>
+        <div className={style.container}>
             <Head>
                 <title>Lista de conversas</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             
-            <main className={Css_Home.main}>
-                <MenuProvider>
-                    {isOpen_search ? (
-                        <Cpt_header_search></Cpt_header_search>
+            <main className={style.main}>
+                <SidebarProvider>
+                    {searchOpen ? (
+                        <HeaderSearch></HeaderSearch>
                     ) : (
-                        <Cpt_header></Cpt_header>
+                        <Header></Header>
                     )}
                     
-                    <Cpt_MenuBurger></Cpt_MenuBurger>
-                </MenuProvider>
-                <div className={Css_Home.content}>
-                    <Link href={'/messages/message'}>
+                    <Sidebar></Sidebar>
+                </SidebarProvider>
+                <div className={style.content}>
+                    <Link href={'/chat'}>
                         <a>Conversa</a>
                     </Link>
                 </div>

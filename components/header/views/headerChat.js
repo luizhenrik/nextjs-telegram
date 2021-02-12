@@ -1,27 +1,27 @@
-import Css_headerApp from '../../components/header/header.module.scss';
-
-import {SearchContext} from '../../contexts/search'
+import style from '../../../components/header/styles/header.module.scss';
 
 import Link from 'next/link'
 import Image from 'next/image'
 import React, { useState, useContext } from 'react';
 
-export default function Header_chat({data}){
-    const { isOpen_search, set_isOpen_search } = useContext(SearchContext);
+import {SearchContext} from '../../../contexts/search'
 
-    let handlerSearch = () => {
-        set_isOpen_search(!isOpen_search);
+export default function HeaderChat({data}){
+    const { searchOpen, set_searchOpen } = useContext(SearchContext);
+
+    let handlerSearchOpen = () => {
+        set_searchOpen(!searchOpen);
     }
 
     return (
         <>
-            <header className={`${Css_headerApp.header}`}>
+            <header className={`${style.header}`}>
                 <Link href={'/'}>
-                    <a className={`${Css_headerApp.header__handler}`}>
+                    <a className={`${style.header__handler}`}>
                         <span className={`fas fa-arrow-left`}></span>
                     </a>
                 </Link>
-                <div className={`${Css_headerApp.header__container}`}>
+                <div className={`${style.header__container}`}>
                     <Link href={'users/profile'}>
                         {data.container.avatar.status ? (
                             <Image
@@ -29,30 +29,30 @@ export default function Header_chat({data}){
                                 alt={data.container.title}
                                 width={data.container.avatar.width}
                                 height={data.container.avatar.height}
-                                className={`${Css_headerApp.header__image}`}
+                                className={`${style.header__image}`}
                             />
                         ) : (" ")}
                     </Link>
                     
-                    <div className={`${Css_headerApp.header__container}`}>
-                        <h3 className={`${Css_headerApp.header__title}`}>{data.container.title}</h3>
+                    <div className={`${style.header__container}`}>
+                        <h3 className={`${style.header__title}`}>{data.container.title}</h3>
 
                         {data.container.description.status ? (
-                            <span className={`${Css_headerApp.header__description}`}>{data.container.description.text}</span>
+                            <span className={`${style.header__description}`}>{data.container.description.text}</span>
                         ) : (" ")}
                     </div>
 
                     <Link href={''}>
-                        <a className={`${Css_headerApp.header__handler}`} onClick={handlerSearch}>
+                        <a className={`${style.header__handler}`} onClick={handlerSearchOpen}>
                             <span className={`fas fa-search`}></span>
                         </a>
                     </Link>
                     
-                    <a className={`${Css_headerApp.header__handler}`}>
+                    <a className={`${style.header__handler}`}>
                         <span className={`fas fa-phone-alt`}></span>
                     </a>
                     
-                    <a className={`${Css_headerApp.header__handler}`}>
+                    <a className={`${style.header__handler}`}>
                         <span className={`fas fa-ellipsis-v`}></span>
                     </a>
                 </div>
