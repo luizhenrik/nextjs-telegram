@@ -16,7 +16,9 @@ export const GeneralProvider = ({children}) => {
             tooltipOpen,
             set_tooltipOpen,
             sidebarOpen,
-            set_sidebarOpen
+            set_sidebarOpen,
+            tooltipOpen,
+            set_tooltipOpen
         }}>
             {children}
         </GeneralContext.Provider>

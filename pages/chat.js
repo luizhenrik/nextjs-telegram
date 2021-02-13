@@ -5,6 +5,7 @@ import React, { useState, useContext } from 'react'
 
 import HeaderChat from '../components/header/views/headerChat'
 import HeaderSearch from '../components/header/views/headerSearch'
+import Tooltip from '../components/tooltip/views/tooltip'
 
 import {GeneralContext} from '../contexts/general'
 
@@ -52,7 +53,10 @@ export default function Chat() {
                     {searchOpen ? (
                         <HeaderSearch></HeaderSearch>
                     ) : (
-                        <HeaderChat data={jsonHeader}></HeaderChat>
+                        <>
+                            <HeaderChat data={jsonHeader}></HeaderChat>
+                            <Tooltip></Tooltip>
+                        </>
                     )}
 
                     <div className={style.content}></div>

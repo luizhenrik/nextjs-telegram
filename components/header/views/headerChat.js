@@ -7,10 +7,10 @@ import React, { useState, useContext } from 'react';
 import {GeneralContext} from '../../../contexts/general'
 
 export default function HeaderChat({data}){
-    const { searchOpen, set_searchOpen } = useContext(GeneralContext);
+    const { tooltipOpen, set_tooltipOpen } = useContext(GeneralContext);
 
-    let handlerSearchOpen = () => {
-        set_searchOpen(!searchOpen);
+    let handlerTooltipOpen = () => {
+        set_tooltipOpen(!tooltipOpen);
     }
 
     return (
@@ -42,7 +42,7 @@ export default function HeaderChat({data}){
                         ) : (" ")}
                     </div>
                     
-                    <a className={`${style.header__handler}`}>
+                    <a className={`${style.header__handler}`} onClick={handlerTooltipOpen}>
                         <span className={`fas fa-ellipsis-v`}></span>
                     </a>
                 </div>
