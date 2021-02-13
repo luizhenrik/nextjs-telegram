@@ -54,7 +54,7 @@ export default function Chat() {
                         <HeaderSearch></HeaderSearch>
                     ) : (
                         <>
-                            <HeaderChat data={jsonHeader}></HeaderChat>
+                            <HeaderChat></HeaderChat>
                             <Tooltip></Tooltip>
                         </>
                     )}

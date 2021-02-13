@@ -6,7 +6,7 @@ import React, { useState, useContext } from 'react';
 
 import {GeneralContext} from '../../../contexts/general'
 
-export default function HeaderChat({data}){
+export default function HeaderChat(){
     const { tooltipOpen, set_tooltipOpen } = useContext(GeneralContext);
 
     let handlerTooltipOpen = () => {
@@ -23,23 +23,19 @@ export default function HeaderChat({data}){
                 </Link>
                 <div className={`${style.header__container}`}>
                     <Link href={'users/profile'}>
-                        {data.container.avatar.status ? (
-                            <Image
-                                src={data.container.avatar.src}
-                                alt={data.container.title}
-                                width={data.container.avatar.width}
-                                height={data.container.avatar.height}
-                                className={`${style.header__image}`}
-                            />
-                        ) : (" ")}
+                        <Image
+                            src={`https://xirrim.com/images/user.png`}
+                            alt={`Lorem Ipsum`}
+                            width={'45'}
+                            height={'45'}
+                            className={`${style.header__image}`}
+                        />
                     </Link>
                     
                     <div className={`${style.header__container}`}>
-                        <h3 className={`${style.header__title}`}>{data.container.title}</h3>
+                        <h3 className={`${style.header__title}`}>{`Lorem Ipsum`}</h3>
 
-                        {data.container.description.status ? (
-                            <span className={`${style.header__description}`}>{data.container.description.text}</span>
-                        ) : (" ")}
+                        <span className={`${style.header__description}`}>{`Online`}</span>
                     </div>
                     
                     <a className={`${style.header__handler}`} onClick={handlerTooltipOpen}>
