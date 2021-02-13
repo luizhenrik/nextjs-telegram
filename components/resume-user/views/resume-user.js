@@ -24,7 +24,7 @@ export default function ResumeUser() {
                 </Link>
 
                 <a className={`${style['resume-user__handler']}`}>
-                    <span className={`fas fa-ellipsis-v`}></span>
+                    <span className={`fas fa-ellipsis-h`}></span>
                 </a>
             </div>
         </>
