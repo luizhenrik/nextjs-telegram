@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: rgb(#FFF, 0.05);
+    background-color: var(--app-header-bg);
     
     &__handler {
         width: $size_handler;
