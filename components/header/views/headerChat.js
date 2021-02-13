@@ -22,15 +22,13 @@ export default function HeaderChat(){
                     </a>
                 </Link>
                 <div className={`${style.header__container}`}>
-                    <Link href={'users/profile'}>
-                        <Image
-                            src={`https://xirrim.com/images/user.png`}
-                            alt={`Lorem Ipsum`}
-                            width={'45'}
-                            height={'45'}
-                            className={`${style.header__image}`}
-                        />
-                    </Link>
+                    <Image
+                        src={`https://xirrim.com/images/user.png`}
+                        alt={`Lorem Ipsum`}
+                        width={'45'}
+                        height={'45'}
+                        className={`${style.header__image}`}
+                    />
                     
                     <div className={`${style.header__container}`}>
                         <h3 className={`${style.header__title}`}>{`Lorem Ipsum`}</h3>

@@ -12,7 +12,7 @@ import ResumeUser from '../components/resume-user/views/resume-user';
 
 import {GeneralContext} from '../contexts/general'
 
-export default function Home() {
+function Home({chatsList}) {
 
     const { searchOpen, headerDetailsOpen } = useContext(GeneralContext);
 
@@ -40,8 +40,23 @@ export default function Home() {
                 <Sidebar></Sidebar>
                 <div className={style.content}>
                     <ResumeUser></ResumeUser>
+
+                    teste: {chatsList}
                 </div>
             </main>
         </div>
     )
 }
+
+export async function getStaticProps() {
+    const resChatsList = await fetch('http://localhost:3000/api/basic.js')
+    const chatsList = await resChatsList.json()
+    
+    return { 
+        props: {
+            chatsList
+        }
+    }
+}
+
+export default Home;
