@@ -18,7 +18,7 @@ export default function Chat() {
                     "width": "45",
                     "height": "45"
                 },
-                "title": "José",
+                "title": "Lorem Ipsum",
                 "description": {
                     "status": true,
                     "text": "Online"
