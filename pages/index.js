@@ -48,14 +48,12 @@ function Home({chatsList}) {
     )
 }
 
-export async function getStaticProps() {
+Home.getInitialProps = async (ctx) => {
     const resChatsList = await fetch('http://localhost:3000/api/basic')
     const chatsList = await resChatsList.json()
 
     return { 
-        props: {
-            chatsList
-        }
+        chatsList
     }
 }
 

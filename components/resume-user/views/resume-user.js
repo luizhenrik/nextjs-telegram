@@ -17,13 +17,10 @@ export default function ResumeUser({data}) {
         set_headerDetailsOpen(!headerDetailsOpen);
     }
 
-    let messages = data.messages;
-    let lengthMessages = messages.length;
-
     return (
         <>
             <div className={style['resume-user']}>
-                <Link href={"/chat"}>
+                <Link href={`/chat?chatId=${data.chatId}`}>
                     <a className={style['resume-user__content']}>
                         <Image
                         src={'https://xirrim.com/images/user.png'}
@@ -35,7 +32,7 @@ export default function ResumeUser({data}) {
 
                         <div className={style['resume-user__container']}>
                             <span className={style['resume-user__nickname']}>{data.name}</span>
-                            <span className={style['resume-user__text']}>{data.messages[lengthMessages - 1].text}</span>
+                            <span className={style['resume-user__text']}><strong>{`${data.messages.username}: `}</strong>{`${data.messages.text}`}</span>
                         </div>
                     </a>
                 </Link>

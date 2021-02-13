@@ -6,7 +6,7 @@ import React, { useState, useContext } from 'react';
 
 import {GeneralContext} from '../../../contexts/general'
 
-export default function HeaderChat(){
+export default function HeaderChat({data}){
     const { tooltipOpen, set_tooltipOpen } = useContext(GeneralContext);
 
     let handlerTooltipOpen = () => {
@@ -24,14 +24,14 @@ export default function HeaderChat(){
                 <div className={`${style.header__container}`}>
                     <Image
                         src={`https://xirrim.com/images/user.png`}
-                        alt={`Lorem Ipsum`}
+                        alt={`${data.name}`}
                         width={'45'}
                         height={'45'}
                         className={`${style.header__image}`}
                     />
                     
                     <div className={`${style.header__container}`}>
-                        <h3 className={`${style.header__title}`}>{`Lorem Ipsum`}</h3>
+                        <h3 className={`${style.header__title}`}>{`${data.name}`}</h3>
 
                         <span className={`${style.header__description}`}>{`Online`}</span>
                     </div>

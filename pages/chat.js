@@ -1,6 +1,7 @@
 import style from '../styles/Home.module.scss'
 
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import React, { useState, useContext } from 'react'
 
 import HeaderChat from '../components/header/views/headerChat'
@@ -9,44 +10,17 @@ import Tooltip from '../components/tooltip/views/tooltip'
 
 import {GeneralContext} from '../contexts/general'
 
-export default function Chat() {
-        let jsonHeader = {
-            "mode": "user", // user/search/menu
-            "container": {
-                "avatar": {
-                    "status": true,
-                    "src": "/images/user.png",
-                    "width": "45",
-                    "height": "45"
-                },
-                "title": "Lorem Ipsum",
-                "description": {
-                    "status": true,
-                    "text": "Online"
-                }
-            },
-            "actions": {
-                "videoCall": true,
-                "voiceCall": true,
-                "search": true,
-                "menu": true
-            },
-            "messages": {
-                0: {
-                    "date": 1234,
-                    "nickname": "José",
-                    "user_avatar": "/images/user.png",
-                    "text": "texto da mensagem"
-                }
-            }
-        };
+function Chat({chat}) {
 
         const { searchOpen } = useContext(GeneralContext);
+        const router = useRouter()
+        const { chatId } = router.query
+        
 
         return (
             <div className={style.container}>
                 <Head>
-                    <title>Conversa com user</title>
+                    <title>Conversa com {chat[chatId].name}</title>
                 </Head>
                 
                 <main className={style.main}>
@@ -54,7 +28,7 @@ export default function Chat() {
                         <HeaderSearch></HeaderSearch>
                     ) : (
                         <>
-                            <HeaderChat></HeaderChat>
+                            <HeaderChat data={chat[chatId]}></HeaderChat>
                             <Tooltip></Tooltip>
                         </>
                     )}
@@ -64,4 +38,14 @@ export default function Chat() {
             </div>
         )
 }
-    
+ 
+Chat.getInitialProps = async (ctx) => {
+    const resChat = await fetch(`http://localhost:3000/api/chats`)
+    const chat = await resChat.json()
+
+    return {
+        chat
+    }
+}
+
+export default Chat;
