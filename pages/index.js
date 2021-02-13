@@ -8,12 +8,11 @@ import Header from '../components/header/views/header'
 import HeaderSearch from '../components/header/views/headerSearch'
 import Sidebar from '../components/sidebar/views/sidebar';
 
-import {SidebarProvider} from '../contexts/sidebar'
-import {SearchContext} from '../contexts/search'
+import {GeneralContext} from '../contexts/general'
 
 export default function Home() {
 
-    const { searchOpen } = useContext(SearchContext);
+    const { searchOpen } = useContext(GeneralContext);
 
     
     return (
@@ -24,15 +23,13 @@ export default function Home() {
             </Head>
             
             <main className={style.main}>
-                <SidebarProvider>
-                    {searchOpen ? (
-                        <HeaderSearch></HeaderSearch>
-                    ) : (
-                        <Header></Header>
-                    )}
-                    
-                    <Sidebar></Sidebar>
-                </SidebarProvider>
+                {searchOpen ? (
+                    <HeaderSearch></HeaderSearch>
+                ) : (
+                    <Header></Header>
+                )}
+                
+                <Sidebar></Sidebar>
                 <div className={style.content}>
                     <Link href={'/chat'}>
                         <a>Conversa</a>

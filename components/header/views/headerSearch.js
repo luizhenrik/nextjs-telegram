@@ -3,10 +3,10 @@ import style from '../../../components/header/styles/header.module.scss'
 import Link from 'next/link'
 import React, { useState, useContext } from 'react';
 
-import {SearchContext} from '../../../contexts/search'
+import {GeneralContext} from '../../../contexts/general'
 
 export default function HeaderSearch() {
-    const { searchOpen, set_searchOpen } = useContext(SearchContext);
+    const { searchOpen, set_searchOpen } = useContext(GeneralContext);
 
     let handlerSearchOpen = () => {
         set_searchOpen(!searchOpen);

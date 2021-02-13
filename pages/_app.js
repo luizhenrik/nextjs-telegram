@@ -1,12 +1,12 @@
 import '../styles/globals.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import {SearchProvider} from '../contexts/search'
+import {GeneralProvider} from '../contexts/general'
 
 function MyApp({ Component, pageProps }) {
     return(
-            <SearchProvider>
+            <GeneralProvider>
                 <Component {...pageProps} />
-            </SearchProvider>
+            </GeneralProvider>
         )
     }
     

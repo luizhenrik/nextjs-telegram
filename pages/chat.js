@@ -6,7 +6,7 @@ import React, { useState, useContext } from 'react'
 import HeaderChat from '../components/header/views/headerChat'
 import HeaderSearch from '../components/header/views/headerSearch'
 
-import {SearchContext} from '../contexts/search'
+import {GeneralContext} from '../contexts/general'
 
 export default function Chat() {
         let jsonHeader = {
@@ -40,7 +40,7 @@ export default function Chat() {
             }
         };
 
-        const { searchOpen } = useContext(SearchContext);
+        const { searchOpen } = useContext(GeneralContext);
 
         return (
             <div className={style.container}>

@@ -4,10 +4,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React, { useState, useContext } from 'react';
 
-import {SearchContext} from '../../../contexts/search'
+import {GeneralContext} from '../../../contexts/general'
 
 export default function HeaderChat({data}){
-    const { searchOpen, set_searchOpen } = useContext(SearchContext);
+    const { searchOpen, set_searchOpen } = useContext(GeneralContext);
 
     let handlerSearchOpen = () => {
         set_searchOpen(!searchOpen);
@@ -41,16 +41,6 @@ export default function HeaderChat({data}){
                             <span className={`${style.header__description}`}>{data.container.description.text}</span>
                         ) : (" ")}
                     </div>
-
-                    <Link href={''}>
-                        <a className={`${style.header__handler}`} onClick={handlerSearchOpen}>
-                            <span className={`fas fa-search`}></span>
-                        </a>
-                    </Link>
-                    
-                    <a className={`${style.header__handler}`}>
-                        <span className={`fas fa-phone-alt`}></span>
-                    </a>
                     
                     <a className={`${style.header__handler}`}>
                         <span className={`fas fa-ellipsis-v`}></span>

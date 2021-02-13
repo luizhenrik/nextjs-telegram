@@ -2,10 +2,10 @@ import style from '../../../components/sidebar/styles/sidebar.module.scss'
 
 import React, { useState, useContext } from 'react'
 
-import {SidebarContext} from '../../../contexts/sidebar'
+import {GeneralContext} from '../../../contexts/general'
 
 function Sidebar() {
-    const { sidebarOpen, set_sidebarOpen } = useContext(SidebarContext);
+    const { sidebarOpen, set_sidebarOpen } = useContext(GeneralContext);
 
     let handlerSidebarOpen = () => {
         set_sidebarOpen(!sidebarOpen);

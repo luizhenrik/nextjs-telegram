@@ -3,13 +3,11 @@ import style from '../../../components/header/styles/header.module.scss';
 import Link from 'next/link'
 import React, { useState, useContext } from 'react';
 
-import {SidebarContext} from '../../../contexts/sidebar'
-import {SearchContext} from '../../../contexts/search'
+import {GeneralContext} from '../../../contexts/general'
 
 export default function Header() {
 
-    const { sidebarOpen, set_sidebarOpen } = useContext(SidebarContext);
-    const { searchOpen, set_searchOpen } = useContext(SearchContext);
+    const { searchOpen, set_searchOpen, sidebarOpen, set_sidebarOpen } = useContext(GeneralContext);
     
     let handlerSidebarOpen = () => {
         set_sidebarOpen(!sidebarOpen);
