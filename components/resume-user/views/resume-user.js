@@ -6,7 +6,7 @@ import React, { useState, useContext } from 'react';
 
 import { GeneralContext } from '../../../contexts/general'
 
-export default function ResumeUser() {
+export default function ResumeUser({data}) {
     const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext);
 
     let handlerTooltipOpen = () => {
@@ -16,6 +16,9 @@ export default function ResumeUser() {
     let handlerHeaderDetailsOpen = () => {
         set_headerDetailsOpen(!headerDetailsOpen);
     }
+
+    let messages = data.messages;
+    let lengthMessages = messages.length;
 
     return (
         <>
@@ -31,15 +34,15 @@ export default function ResumeUser() {
                         className={style['resume-user__avatar']}></Image>
 
                         <div className={style['resume-user__container']}>
-                            <span className={style['resume-user__nickname']}>Lorem Ipsum</span>
-                            <span className={style['resume-user__text']}>is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
+                            <span className={style['resume-user__nickname']}>{data.name}</span>
+                            <span className={style['resume-user__text']}>{data.messages[lengthMessages - 1].text}</span>
                         </div>
                     </a>
                 </Link>
 
                 {!headerDetailsOpen ? (
                     <a className={`${style['resume-user__handler']}`} onClick={handlerHeaderDetailsOpen}>
-                        <span className={`fas fa-cog`}></span>
+                        <span className={`far fa-check-circle`}></span>
                     </a>
                 ) : (
                     <a className={`${style['resume-user__handler']}`}>

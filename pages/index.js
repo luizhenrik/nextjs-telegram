@@ -39,24 +39,24 @@ function Home({chatsList}) {
                 
                 <Sidebar></Sidebar>
                 <div className={style.content}>
-                    <ResumeUser></ResumeUser>
-
-                    teste: {chatsList}
+                    {chatsList.map((value, index) => (
+                        <ResumeUser data={value}></ResumeUser>
+                    ))}
                 </div>
             </main>
         </div>
     )
 }
 
-// export async function getStaticProps() {
-//     const resChatsList = await fetch('https://xirrim.com/api/basic.js')
-//     const chatsList = await resChatsList.json()
+export async function getStaticProps() {
+    const resChatsList = await fetch('http://localhost:3000/api/basic')
+    const chatsList = await resChatsList.json()
 
-//     return { 
-//         props: {
-//             chatsList
-//         }
-//     }
-// }
+    return { 
+        props: {
+            chatsList
+        }
+    }
+}
 
 export default Home;
