@@ -48,15 +48,15 @@ function Home({chatsList}) {
     )
 }
 
-export async function getStaticProps() {
-    const resChatsList = await fetch('http://localhost:3000/api/basic.js')
-    const chatsList = await resChatsList.json()
-    
-    return { 
-        props: {
-            chatsList
-        }
-    }
-}
+// export async function getStaticProps() {
+//     const resChatsList = await fetch('https://xirrim.com/api/basic.js')
+//     const chatsList = await resChatsList.json()
+
+//     return { 
+//         props: {
+//             chatsList
+//         }
+//     }
+// }
 
 export default Home;
