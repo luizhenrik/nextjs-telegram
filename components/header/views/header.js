@@ -20,11 +20,10 @@ export default function Header() {
     return (
         <>
             <header className={`${style.header}`}>
-                    <Link href={'#'}>
-                        <a className={`${style.header__handler}`} onClick={handlerSidebarOpen}>
-                            <span className={`fas fa-bars`}></span>
-                        </a>
-                    </Link>
+                    <a className={`${style.header__handler}`} onClick={handlerSidebarOpen}>
+                        <span className={`fas fa-bars`}></span>
+                    </a>
+                    
                     <div className={`${style.header__container}`}>
                         <div className={`${style.header__container}`}>
                             <h3 className={`${style.header__title}`}>{`Xirrim`}</h3>

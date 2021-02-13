@@ -6,6 +6,7 @@ import React, { useState, useContext } from 'react';
 
 import Header from '../components/header/views/header'
 import HeaderSearch from '../components/header/views/headerSearch'
+import HeaderDetails from '../components/header/views/headerDetails'
 import Sidebar from '../components/sidebar/views/sidebar';
 import ResumeUser from '../components/resume-user/views/resume-user';
 
@@ -13,7 +14,7 @@ import {GeneralContext} from '../contexts/general'
 
 export default function Home() {
 
-    const { searchOpen } = useContext(GeneralContext);
+    const { searchOpen, headerDetailsOpen } = useContext(GeneralContext);
 
     
     return (
@@ -27,7 +28,13 @@ export default function Home() {
                 {searchOpen ? (
                     <HeaderSearch></HeaderSearch>
                 ) : (
-                    <Header></Header>
+                    <>
+                        {headerDetailsOpen ? (
+                            <HeaderDetails></HeaderDetails>
+                        ) : (
+                            <Header></Header>
+                        )}
+                    </>
                 )}
                 
                 <Sidebar></Sidebar>

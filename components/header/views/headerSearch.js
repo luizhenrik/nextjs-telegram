@@ -15,11 +15,10 @@ export default function HeaderSearch() {
     return (
         <>
             <header className={`${style.header}`}>
-                <Link href={''}>
-                    <a className={`${style.header__handler}`} onClick={handlerSearchOpen}>
-                        <i className={`fas fa-arrow-left`}></i>
-                    </a>
-                </Link>
+                <a className={`${style.header__handler}`} onClick={handlerSearchOpen}>
+                    <i className={`fas fa-arrow-left`}></i>
+                </a>
+
                 <div className={`${style.header__container}`}>
                     <input className={`${style.header__field}`} placeholder={'Buscar'}></input>
                 </div>

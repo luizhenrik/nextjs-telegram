@@ -6,6 +6,7 @@ export const GeneralProvider = ({children}) => {
     const [searchOpen, set_searchOpen] = useState(false);
     const [tooltipOpen, set_tooltipOpen] = useState(false);
     const [sidebarOpen, set_sidebarOpen] = useState(false);
+    const [headerDetailsOpen, set_headerDetailsOpen] = useState(false);
 
 
     return (
@@ -18,7 +19,9 @@ export const GeneralProvider = ({children}) => {
             sidebarOpen,
             set_sidebarOpen,
             tooltipOpen,
-            set_tooltipOpen
+            set_tooltipOpen,
+            headerDetailsOpen,
+            set_headerDetailsOpen,
         }}>
             {children}
         </GeneralContext.Provider>

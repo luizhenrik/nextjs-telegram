@@ -1,8 +1,22 @@
-import Link from "next/link"
-import Image from "next/image"
 import style from "../../../components/resume-user/styles/resume-user.module.scss"
 
+import Link from "next/link"
+import Image from "next/image"
+import React, { useState, useContext } from 'react';
+
+import { GeneralContext } from '../../../contexts/general'
+
 export default function ResumeUser() {
+    const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext);
+
+    let handlerTooltipOpen = () => {
+        set_tooltipOpen(!tooltipOpen);
+    }
+
+    let handlerHeaderDetailsOpen = () => {
+        set_headerDetailsOpen(!headerDetailsOpen);
+    }
+
     return (
         <>
             <div className={style['resume-user']}>
@@ -23,9 +37,15 @@ export default function ResumeUser() {
                     </a>
                 </Link>
 
-                <a className={`${style['resume-user__handler']}`}>
-                    <span className={`fas fa-ellipsis-h`}></span>
-                </a>
+                {!headerDetailsOpen ? (
+                    <a className={`${style['resume-user__handler']}`} onClick={handlerHeaderDetailsOpen}>
+                        <span className={`fas fa-cog`}></span>
+                    </a>
+                ) : (
+                    <a className={`${style['resume-user__handler']}`}>
+                        <span className={`fas fa-check-circle`}></span>
+                    </a>
+                )}                
             </div>
         </>
     )
