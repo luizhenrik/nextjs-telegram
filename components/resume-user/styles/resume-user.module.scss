@@ -35,9 +35,25 @@
         justify-content: center;
         font-size: 21px;
         color: rgba(#FFF, 0.25);
+        cursor: pointer;
 
         &:hover {
             color: #FFF;
+        }
+
+        &[data-selected="true"] {
+            color: green;
+            
+            span {
+                &:before {
+                    font-weight: 900;
+                }
+            }
+        }
+
+        &:not([data-clickable="true"]):not([data-selected="true"]) {
+            pointer-events: none;
+            cursor: default;
         }
     }
     

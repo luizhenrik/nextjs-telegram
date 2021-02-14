@@ -13,8 +13,9 @@ export default function ResumeUser({data}) {
         set_tooltipOpen(!tooltipOpen);
     }
 
-    let handlerHeaderDetailsOpen = () => {
+    let handlerHeaderDetailsOpen = (e) => {
         set_headerDetailsOpen(!headerDetailsOpen);
+        e.currentTarget.dataset.selected = !headerDetailsOpen;
     }
 
     return (
@@ -37,15 +38,13 @@ export default function ResumeUser({data}) {
                     </a>
                 </Link>
 
-                {!headerDetailsOpen ? (
-                    <a className={`${style['resume-user__handler']}`} onClick={handlerHeaderDetailsOpen}>
-                        <span className={`far fa-check-circle`}></span>
-                    </a>
-                ) : (
-                    <a className={`${style['resume-user__handler']}`}>
-                        <span className={`fas fa-check-circle`}></span>
-                    </a>
-                )}                
+                <a 
+                className={`${style['resume-user__handler']} js-user-selecting-icon`} 
+                data-selected={`false`}
+                data-clickable={!headerDetailsOpen}
+                onClick={handlerHeaderDetailsOpen}>
+                    <span className={`far fa-check-circle`}></span>
+                </a>          
             </div>
         </>
     )
