@@ -16,9 +16,11 @@ export default createGlobalStyle`
 
     html,
     body {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-            Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-        font-size: 14px;
-        color: ${props => props.theme.colors.color};
+        font-family: 'Roboto', sans-serif;
+        font-weight: ${props => props.theme.font.weight.regular};
+        font-size: ${props => props.theme.font.sizes.default};
+        color: ${props => props.theme.colors.text};
+        min-height: 100vh;
+        min-height: -webkit-fill-avaliable;
     }
 `

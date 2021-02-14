@@ -1,37 +1,38 @@
-.header {
-    $size_handler: 45px;
+import styled from 'styled-components'
 
+const sizehandler = '45px'
+
+export const Headerstyle = styled.div`
     width: 100%;
     float: left;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background-color: var(--app-header-bg);
-    
-    &__handler {
-        width: $size_handler;
-        height: $size_handler;
-        flex: 0 1 $size_handler;
+
+    .header__handler {
+        width: ${sizehandler};
+        height: ${sizehandler};
+        flex: 0 1 ${sizehandler};
         float: left;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 21px;
-        color: rgba(#FFF, 0.25);
-
-        &:hover {
-            color: #FFF;
-        }
+        font-size: ${props => props.theme.font.sizes.large2x};
+        color: ${props => props.theme.colors.text};
     }
 
-    &__container{
+    .header__handler:hover {
+        color: #FFF;
+    }
+
+    .header__container{
         width: auto;
         flex: 1 1 10em;
         padding: 0;
         border: none;
         position: relative;
-        height: $size_handler;
+        height: ${sizehandler};
         margin-left: 10px;
         display: flex;
         flex-wrap: wrap;
@@ -39,21 +40,21 @@
         justify-content: center;
     }
 
-    &__field {
+    .header__field {
         width: 100%;
         float: left;
         border: none;
         border-radius: 6px;
-        background-color: rgba(#FFF, 0.05);
+        background-color: rgba(255, 255, 255, 0.05);
         outline: none;
         height: 100%;
         padding: 10px;
     }
 
-    &__image {
-        width: $size_handler;
-        height: $size_handler;
-        flex: 0 1 $size_handler;
+    .header__image {
+        width: ${sizehandler};
+        height: ${sizehandler};
+        flex: 0 1 ${sizehandler};
         float: left;
         display: flex;
         align-items: center;
@@ -61,7 +62,7 @@
         border-radius: 100%;
     }
 
-    &__title {
+    .header__title {
         width: 100%;
         float: left;
         color: white;
@@ -70,11 +71,11 @@
         line-height: 1.2;
     }
 
-    &__description {
+    .header__description {
         width: 100%;
         float: left;
         font-size: 12px;
         line-height: 1.2;
-        color: rgba(#FFF, 0.5);
+        color: rgba(255,255,255, 0.5);
     }
-}
+`

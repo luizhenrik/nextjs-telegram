@@ -1,5 +1,3 @@
-import style from '../styles/Home.module.scss'
-
 import Head from 'next/head'
 import React, { useContext } from 'react'
 
@@ -10,18 +8,19 @@ import Sidebar from '../components/sidebar/views/sidebar'
 import ResumeUser from '../components/resume-user/views/resume-user'
 
 import { GeneralContext } from '../contexts/general'
+import { Appstyle } from '../styles/app'
 
 function Home({ chatsList }) {
   const { searchOpen, headerDetailsOpen } = useContext(GeneralContext)
 
   return (
-        <div className={style.container}>
+        <Appstyle>
             <Head>
                 <title>Lista de conversas</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main className={style.main}>
+            <main className={'app__content'}>
                 {searchOpen
                   ? (
                     <HeaderSearch></HeaderSearch>
@@ -31,13 +30,13 @@ function Home({ chatsList }) {
                     )}
 
                 <Sidebar></Sidebar>
-                <div className={style.content}>
+                <div className={'app__container'}>
                     {chatsList.map((value, index) => (
                         <ResumeUser data={value}></ResumeUser>
                     ))}
                 </div>
             </main>
-        </div>
+        </Appstyle>
   )
 }
 

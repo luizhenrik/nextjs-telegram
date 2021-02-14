@@ -1,8 +1,7 @@
-import style from '../../../components/header/styles/header.module.scss'
-
 import React, { useContext } from 'react'
 
 import { GeneralContext } from '../../../contexts/general'
+import { Headerstyle } from '../styles/header.module'
 
 export default function HeaderSearch() {
   const { searchOpen, set_searchOpen } = useContext(GeneralContext)
@@ -13,15 +12,15 @@ export default function HeaderSearch() {
 
   return (
         <>
-            <header className={`${style.header}`}>
-                <a className={`${style.header__handler}`} onClick={handlerSearchOpen}>
+            <Headerstyle>
+                <a className={'header__handler'} onClick={handlerSearchOpen}>
                     <i className={'fas fa-arrow-left'}></i>
                 </a>
 
-                <div className={`${style.header__container}`}>
-                    <input className={`${style.header__field}`} placeholder={'Buscar'}></input>
+                <div className={'header__container'}>
+                    <input className={'header__field'} placeholder={'Buscar'}></input>
                 </div>
-            </header>
+            </Headerstyle>
         </>
   )
 }

@@ -1,4 +1,3 @@
-import style from '../styles/Home.module.scss'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -9,6 +8,7 @@ import HeaderSearch from '../components/header/views/headerSearch'
 import Tooltip from '../components/tooltip/views/tooltip'
 
 import { GeneralContext } from '../contexts/general'
+import { Appstyle } from '../styles/app'
 
 // eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
@@ -17,12 +17,12 @@ function Chat({ chat }) {
   const { chatId } = router.query
 
   return (
-        <div className={style.container}>
+        <Appstyle>
             <Head>
                 <title>Conversa com {chat[chatId].name}</title>
             </Head>
 
-            <main className={style.main}>
+            <main className={'app__content'}>
                 {searchOpen
                   ? (
                     <HeaderSearch></HeaderSearch>
@@ -34,9 +34,9 @@ function Chat({ chat }) {
                     </>
                     )}
 
-                <div className={style.content}></div>
+                <div className={'app__container'}></div>
             </main>
-        </div>
+        </Appstyle>
   )
 }
 
