@@ -13,6 +13,7 @@ const theme = {
     },
     sizes: {
       default: '14px',
+      small: '12px',
       medium: '16px',
       large: '18px',
       large2x: '21px'

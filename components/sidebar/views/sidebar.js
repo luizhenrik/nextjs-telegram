@@ -1,8 +1,8 @@
-import style from '../../../components/sidebar/styles/sidebar.module.scss'
 
 import React, { useContext } from 'react'
 
 import { GeneralContext } from '../../../contexts/general'
+import { Sidebarstyle } from '../styles/sidebar.module'
 
 function Sidebar() {
   const { sidebarOpen, set_sidebarOpen } = useContext(GeneralContext)
@@ -13,14 +13,14 @@ function Sidebar() {
 
   return (
         <>
-            <div className={`${style.sidebar}`} data-open={sidebarOpen}>
-                <div className={`${style.sidebar__overlay}`} onClick={handlerSidebarOpen}></div>
-                <div className={`${style.sidebar__content}`}>
-                    <div className={`${style.sidebar__header}`}></div>
-                    <div className={`${style.sidebar__main}`}></div>
-                    <div className={`${style.sidebar__footer}`}></div>
+            <Sidebarstyle data-open={sidebarOpen}>
+                <div className={'sidebar__overlay'} onClick={handlerSidebarOpen}></div>
+                <div className={'sidebar__content'}>
+                    <div className={'sidebar__header'}></div>
+                    <div className={'sidebar__main'}></div>
+                    <div className={'sidebar__footer'}></div>
                 </div>
-            </div>
+            </Sidebarstyle>
         </>
   )
 }

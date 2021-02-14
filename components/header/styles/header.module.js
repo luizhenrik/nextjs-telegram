@@ -9,6 +9,7 @@ export const Headerstyle = styled.div`
     align-items: center;
     justify-content: center;
     padding: 10px;
+    background-color: rgba(0,0,0, 0.05);
 
     .header__handler {
         width: ${sizehandler};
@@ -23,7 +24,7 @@ export const Headerstyle = styled.div`
     }
 
     .header__handler:hover {
-        color: #FFF;
+        color: ${props => props.theme.colors.text};
     }
 
     .header__container{
@@ -65,17 +66,18 @@ export const Headerstyle = styled.div`
     .header__title {
         width: 100%;
         float: left;
-        color: white;
-        font-weight: 700;
-        font-size: 18px;
+        color: ${props => props.theme.colors.text};
+        font-weight: ${props => props.theme.font.weight.strong};
+        font-size: ${props => props.theme.font.sizes.large};
         line-height: 1.2;
     }
 
     .header__description {
         width: 100%;
         float: left;
-        font-size: 12px;
+        font-size: ${props => props.theme.font.sizes.small};
         line-height: 1.2;
-        color: rgba(255,255,255, 0.5);
+        color: ${props => props.theme.colors.text};
+        opacity: 0.5;
     }
 `

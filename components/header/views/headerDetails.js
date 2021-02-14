@@ -15,6 +15,12 @@ export default function HeaderDetails() {
 
   const handlerHeaderDetailsOpen = () => {
     set_headerDetailsOpen(!headerDetailsOpen)
+
+    const icons = document.querySelectorAll('.js-user-selecting-icon')
+
+    for (let i = 0; i < icons.length; i++) {
+      icons[i].dataset.selected = 'false'
+    }
   }
 
   return (

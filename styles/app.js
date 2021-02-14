@@ -17,7 +17,6 @@ export const Appstyle = styled.div`
         flex-direction: column;
         box-shadow: 0 0 5px 5px rgba(0, 0 , 0 , 0.05);
         position: relative;
-        overflow: hidden;
     }
 
     .app__container {

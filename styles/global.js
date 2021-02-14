@@ -23,4 +23,8 @@ export default createGlobalStyle`
         min-height: 100vh;
         min-height: -webkit-fill-avaliable;
     }
+
+    a {
+        text-decoration: none;
+    }
 `

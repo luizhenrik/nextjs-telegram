@@ -1,4 +1,6 @@
-.sidebar {
+import styled from 'styled-components'
+
+export const Sidebarstyle = styled.div`
     width: 100%;
     height: 100%;
     float: left;
@@ -8,31 +10,32 @@
     opacity: 0;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
 
     &[data-open="true"] {
         opacity: 1;
         pointer-events: all;
     }
 
-    &__overlay {
+    &[data-open="true"] .sidebar__content{
+        left: 0;
+    }
+
+    .sidebar__overlay {
         width: 100%;
         height: 100%;
         float: left;
-        background-color: rgba(#000, 0.3);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 
-    &__content {
+    .sidebar__content {
         width: 70%;
         height: 100%;
         float: left;
         position: absolute;
         top: 0;
         left: -100%;
-        background-color: var(--app-sidebar-bg);
-        transition: left 0.15s linear;
-
-        .sidebar[data-open="true"] &{
-            left: 0;
-        }
+        background-color: ${props => props.theme.colors.floatBackground};
+        transition: left 0.30s linear;
     }
-}
+`

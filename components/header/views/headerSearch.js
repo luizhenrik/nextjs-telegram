@@ -8,6 +8,12 @@ export default function HeaderSearch() {
 
   const handlerSearchOpen = () => {
     set_searchOpen(!searchOpen)
+
+    const icons = document.querySelectorAll('.js-user-selecting-icon')
+
+    for (let i = 0; i < icons.length; i++) {
+      icons[i].dataset.selected = 'false'
+    }
   }
 
   return (

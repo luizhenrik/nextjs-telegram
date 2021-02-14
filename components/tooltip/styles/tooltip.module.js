@@ -1,4 +1,6 @@
-.tooltip {
+import styled from 'styled-components'
+
+export const Tooltipstyle = styled.div`
     width: 100%;
     height: 100%;
     float: left;
@@ -14,43 +16,42 @@
         pointer-events: all;
     }
 
-    &__overlay {
+    .tooltip__overlay {
         width: 100%;
         height: 100%;
         float: left;
-        // background-color: rgba(#000, 0.3);
     }
 
-    &__content {
+    .tooltip__content {
         width: 50%;
         float: left;
         position: absolute;
         top: 10px;
         right: 10px;
-        background-color: var(--app-tooltip-bg);
+        background-color: ${props => props.theme.colors.floatBackground};
         border-radius: 12px;
         transition: left 0.15s linear;
     }
 
-    &__nav {
+    .tooltip__nav {
         width: 100%;
         float: left;
     }
 
-    &__nav-item {
+    .tooltip__nav-item {
         width: 100%;
         float: left;
         padding: 12px 20px;
         display: flex;
         align-items: center;
-
-        &:hover {
-            background-color: rgba(#000, 0.1);
-        }
     }
 
-    &__nav-icon {
-        font-size: 18px;
+    .tooltip:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .tooltip__nav-icon {
+        font-size: ${props => props.theme.font.sizes.large};
         margin-right: 20px;
         opacity: 0.2;
         width: 25px;
@@ -60,7 +61,7 @@
         justify-content: center;
     }
 
-    &__nav-text {
-        font-size: 16px;
+    .tooltip__nav-text {
+        font-size: ${props => props.theme.font.sizes.medium};
     }
-}
+`
