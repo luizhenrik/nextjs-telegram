@@ -1,26 +1,25 @@
 import style from '../../../components/tooltip/styles/tooltip.module.scss'
 
-import Link from 'next/link'
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react'
 
 import { GeneralContext } from '../../../contexts/general'
 
 export default function Tooltip() {
-    const { searchOpen, set_searchOpen, tooltipOpen, set_tooltipOpen } = useContext(GeneralContext);
+  const { searchOpen, set_searchOpen, tooltipOpen, set_tooltipOpen } = useContext(GeneralContext)
 
-    let handlerSearchOpen = () => {
-        set_searchOpen(!searchOpen);
+  const handlerSearchOpen = () => {
+    set_searchOpen(!searchOpen)
 
-        if(tooltipOpen){
-            set_tooltipOpen(!tooltipOpen);
-        }
+    if (tooltipOpen) {
+      set_tooltipOpen(!tooltipOpen)
     }
+  }
 
-    let handlerTooltipOpen = () => {
-        set_tooltipOpen(!tooltipOpen);
-    }
+  const handlerTooltipOpen = () => {
+    set_tooltipOpen(!tooltipOpen)
+  }
 
-    return (
+  return (
         <div className={style.tooltip} data-open={tooltipOpen}>
             <div className={style.tooltip__overlay} onClick={handlerTooltipOpen}></div>
             <div className={style.tooltip__content}>
@@ -48,5 +47,5 @@ export default function Tooltip() {
                 </nav>
             </div>
         </div>
-    )
+  )
 }

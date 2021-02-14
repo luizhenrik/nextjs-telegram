@@ -1,24 +1,24 @@
-import style from "../../../components/resume-user/styles/resume-user.module.scss"
+import style from '../../../components/resume-user/styles/resume-user.module.scss'
 
-import Link from "next/link"
-import Image from "next/image"
-import React, { useState, useContext } from 'react';
+import Link from 'next/link'
+import Image from 'next/image'
+import React, { useContext } from 'react'
 
 import { GeneralContext } from '../../../contexts/general'
 
-export default function ResumeUser({data}) {
-    const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext);
+export default function ResumeUser({ data }) {
+  const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext)
 
-    let handlerTooltipOpen = () => {
-        set_tooltipOpen(!tooltipOpen);
-    }
+  const handlerTooltipOpen = () => {
+    set_tooltipOpen(!tooltipOpen)
+  }
 
-    let handlerHeaderDetailsOpen = (e) => {
-        set_headerDetailsOpen(!headerDetailsOpen);
-        e.currentTarget.dataset.selected = !headerDetailsOpen;
-    }
+  const handlerHeaderDetailsOpen = (e) => {
+    set_headerDetailsOpen(!headerDetailsOpen)
+    e.currentTarget.dataset.selected = !headerDetailsOpen
+  }
 
-    return (
+  return (
         <>
             <div className={style['resume-user']}>
                 <Link href={`/chat?chatId=${data.chatId}`}>
@@ -38,14 +38,14 @@ export default function ResumeUser({data}) {
                     </a>
                 </Link>
 
-                <a 
-                className={`${style['resume-user__handler']} js-user-selecting-icon`} 
-                data-selected={`false`}
+                <a
+                className={`${style['resume-user__handler']} js-user-selecting-icon`}
+                data-selected={'false'}
                 data-clickable={!headerDetailsOpen}
                 onClick={handlerHeaderDetailsOpen}>
-                    <span className={`far fa-check-circle`}></span>
-                </a>          
+                    <span className={'far fa-check-circle'}></span>
+                </a>
             </div>
         </>
-    )
+  )
 }

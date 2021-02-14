@@ -1,17 +1,17 @@
 import style from '../../../components/sidebar/styles/sidebar.module.scss'
 
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 
-import {GeneralContext} from '../../../contexts/general'
+import { GeneralContext } from '../../../contexts/general'
 
 function Sidebar() {
-    const { sidebarOpen, set_sidebarOpen } = useContext(GeneralContext);
+  const { sidebarOpen, set_sidebarOpen } = useContext(GeneralContext)
 
-    let handlerSidebarOpen = () => {
-        set_sidebarOpen(!sidebarOpen);
-    }
+  const handlerSidebarOpen = () => {
+    set_sidebarOpen(!sidebarOpen)
+  }
 
-    return (
+  return (
         <>
             <div className={`${style.sidebar}`} data-open={sidebarOpen}>
                 <div className={`${style.sidebar__overlay}`} onClick={handlerSidebarOpen}></div>
@@ -22,7 +22,7 @@ function Sidebar() {
                 </div>
             </div>
         </>
-    )
+  )
 }
 
-export default Sidebar;
+export default Sidebar
