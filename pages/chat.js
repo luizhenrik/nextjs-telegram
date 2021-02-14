@@ -40,7 +40,7 @@ function Chat({chat}) {
 }
  
 Chat.getInitialProps = async (ctx) => {
-    const resChat = await fetch(`http://localhost:3000/api/chats`)
+    const resChat = await fetch(`https://xirrim.com/api/chats`)
     const chat = await resChat.json()
 
     return {
