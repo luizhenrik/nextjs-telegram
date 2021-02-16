@@ -3,6 +3,7 @@ const theme = {
   colors: {
     background: '#042c44',
     floatBackground: '#1a468a',
+    messagesBackground: '#1a468a',
     text: '#FFF'
   },
   font: {

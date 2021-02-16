@@ -4,7 +4,7 @@ import { MessageStyle } from '../styles/message.module'
 export default function Message({ data }) {
   return (
     <>
-        <MessageStyle data-type={'text'}>
+        <MessageStyle data-type={'text'} data-sender={data.type}>
             <div className={'message__item-content'}>
                 <p className={'message__item-text'}>{`${data.text}`}</p>
                 <sub>

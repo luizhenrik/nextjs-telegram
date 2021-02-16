@@ -3,10 +3,35 @@ import styled from 'styled-components'
 export const MessageStyle = styled.div`
     width: 100%;
     float: left;
-    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+
+    &:before {
+        content: '';
+        width: 20px;
+        height: 20px;
+        float: left;
+        position: absolute;
+        left: 3px;
+        bottom: 10px;
+        background-color: ${props => props.theme.colors.messagesBackground};
+        clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+        z-index: 1;
+    }
 
     &:nth-child(1) {
         margin-top: auto;
+    }
+
+    &[data-sender="sent"] {
+        &:before {
+            left: inherit;
+            right: 3px;
+        }
+
+        .message__item-content {
+            float: right;
+        }
     }
 
     .message__item-content {
@@ -14,13 +39,14 @@ export const MessageStyle = styled.div`
         float: left;
         max-width: 80%;
         border-radius: 12px;
-        background-color: rgba(0,0,0, 0.5);
-        padding: 5px;
+        background-color: ${props => props.theme.colors.messagesBackground};
+        padding: 10px;
+        z-index: 2;
+        position: relative;
     }
 
     .message__item-text {
         width: 100%;
         float: left;
-        font-size: 16px;
     }
 `
