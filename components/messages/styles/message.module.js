@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const MessageStyle = styled.div`
     width: 100%;
     float: left;
+    margin-top: 10px;
 
     &:nth-child(1) {
         margin-top: auto;
