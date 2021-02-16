@@ -41,7 +41,9 @@ function Home({ chatsList }) {
 }
 
 Home.getInitialProps = async (ctx) => {
-  const resChatsList = await fetch('https://xirrim.com/api/conversations')
+  const { hostUrl } = useContext(GeneralContext)
+
+  const resChatsList = await fetch(`${hostUrl}/api/conversations`)
   const chatsList = await resChatsList.json()
 
   return {
