@@ -26,5 +26,7 @@ export const Appstyle = styled.div`
         display: flex;
         flex-wrap: nowrap;
         flex-direction: column;
+        overflow: auto;
+        max-height: 100%;
     }
 `
