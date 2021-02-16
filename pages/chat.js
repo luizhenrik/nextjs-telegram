@@ -5,6 +5,7 @@ import React, { useContext } from 'react'
 
 import HeaderChat from '../components/header/views/headerChat'
 import HeaderSearch from '../components/header/views/headerSearch'
+import Message from '../components/messages/views/message'
 import Tooltip from '../components/tooltip/views/tooltip'
 
 import { GeneralContext } from '../contexts/general'
@@ -15,6 +16,7 @@ function Chat({ chat }) {
   const { searchOpen } = useContext(GeneralContext)
   const router = useRouter()
   const { chatId } = router.query
+  const messages = chat[chatId].messages
 
   return (
         <Appstyle>
@@ -34,7 +36,11 @@ function Chat({ chat }) {
                     </>
                     )}
 
-                <div className={'app__container'}></div>
+                <div className={'app__container'}>
+                    {messages.map((value, index) => (
+                        <Message data={messages[index]}></Message>
+                    ))}
+                </div>
             </main>
         </Appstyle>
   )

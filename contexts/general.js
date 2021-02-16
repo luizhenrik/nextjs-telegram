@@ -1,29 +1,26 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState } from 'react'
 
-export const GeneralContext = createContext();
+export const GeneralContext = createContext()
 
-export const GeneralProvider = ({children}) => {
-    const [searchOpen, set_searchOpen] = useState(false);
-    const [tooltipOpen, set_tooltipOpen] = useState(false);
-    const [sidebarOpen, set_sidebarOpen] = useState(false);
-    const [headerDetailsOpen, set_headerDetailsOpen] = useState(false);
+export const GeneralProvider = ({ children }) => {
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [tooltipOpen, setTooltipOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [headerDetailsOpen, setHeaderDetailsOpen] = useState(false)
 
-
-    return (
+  return (
         <GeneralContext.Provider
         value={{
-            searchOpen,
-            set_searchOpen,
-            tooltipOpen,
-            set_tooltipOpen,
-            sidebarOpen,
-            set_sidebarOpen,
-            tooltipOpen,
-            set_tooltipOpen,
-            headerDetailsOpen,
-            set_headerDetailsOpen,
+          searchOpen,
+          setSearchOpen,
+          tooltipOpen,
+          setTooltipOpen,
+          sidebarOpen,
+          setSidebarOpen,
+          headerDetailsOpen,
+          setHeaderDetailsOpen
         }}>
             {children}
         </GeneralContext.Provider>
-    )
+  )
 }

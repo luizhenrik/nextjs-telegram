@@ -6,10 +6,10 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function HeaderChat({ data }) {
-  const { tooltipOpen, set_tooltipOpen } = useContext(GeneralContext)
+  const { tooltipOpen, setTooltipOpen } = useContext(GeneralContext)
 
-  const handlerTooltipOpen = () => {
-    set_tooltipOpen(!tooltipOpen)
+  const handlertooltipOpen = () => {
+    setTooltipOpen(!tooltipOpen)
   }
 
   return (
@@ -35,7 +35,7 @@ export default function HeaderChat({ data }) {
                         <span className={'header__description'}>{'Online'}</span>
                     </div>
 
-                    <a className={'header__handler'} onClick={handlerTooltipOpen}>
+                    <a className={'header__handler'} onClick={handlertooltipOpen}>
                         <span className={'fas fa-ellipsis-v'}></span>
                     </a>
                 </div>

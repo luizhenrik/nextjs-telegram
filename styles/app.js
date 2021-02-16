@@ -23,5 +23,8 @@ export const Appstyle = styled.div`
         width: 100%;
         float: left;
         flex: 1 1 10em;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
     }
 `

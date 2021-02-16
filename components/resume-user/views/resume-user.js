@@ -7,14 +7,14 @@ import { GeneralContext } from '../../../contexts/general'
 import { Resumeuserstyle } from '../styles/resumeuser.module'
 
 export default function ResumeUser({ data }) {
-  const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext)
+  const { tooltipOpen, setTooltipOpen, headerDetailsOpen, setHeaderDetailsOpen } = useContext(GeneralContext)
 
-  const handlerTooltipOpen = () => {
-    set_tooltipOpen(!tooltipOpen)
+  const handlertooltipOpen = () => {
+    setTooltipOpen(!tooltipOpen)
   }
 
-  const handlerHeaderDetailsOpen = (e) => {
-    set_headerDetailsOpen(!headerDetailsOpen)
+  const handlerheaderDetailsOpen = (e) => {
+    setHeaderDetailsOpen(!headerDetailsOpen)
     e.currentTarget.dataset.selected = !headerDetailsOpen
   }
 
@@ -42,7 +42,7 @@ export default function ResumeUser({ data }) {
                 className={`${'resume-user__handler'} js-user-selecting-icon`}
                 data-selected={'false'}
                 data-clickable={!headerDetailsOpen}
-                onClick={handlerHeaderDetailsOpen}>
+                onClick={handlerheaderDetailsOpen}>
                     <span className={'far fa-check-circle'}></span>
                 </a>
             </Resumeuserstyle>

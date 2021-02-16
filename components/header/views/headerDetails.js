@@ -7,14 +7,14 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function HeaderDetails() {
-  const { tooltipOpen, set_tooltipOpen, headerDetailsOpen, set_headerDetailsOpen } = useContext(GeneralContext)
+  const { tooltipOpen, setTooltipOpen, headerDetailsOpen, setHeaderDetailsOpen } = useContext(GeneralContext)
 
-  const handlerTooltipOpen = () => {
-    set_tooltipOpen(!tooltipOpen)
+  const handlertooltipOpen = () => {
+    setTooltipOpen(!tooltipOpen)
   }
 
-  const handlerHeaderDetailsOpen = () => {
-    set_headerDetailsOpen(!headerDetailsOpen)
+  const handlerheaderDetailsOpen = () => {
+    setHeaderDetailsOpen(!headerDetailsOpen)
 
     const icons = document.querySelectorAll('.js-user-selecting-icon')
 
@@ -26,7 +26,7 @@ export default function HeaderDetails() {
   return (
         <>
             <Headerstyle>
-                <a className={'header__handler'} onClick={handlerHeaderDetailsOpen}>
+                <a className={'header__handler'} onClick={handlerheaderDetailsOpen}>
                     <span className={'fas fa-arrow-left'}></span>
                 </a>
 
@@ -47,7 +47,7 @@ export default function HeaderDetails() {
                         <span className={'fas fa-trash'}></span>
                     </a>
 
-                    <a className={'header__handler'} onClick={handlerTooltipOpen}>
+                    <a className={'header__handler'} onClick={handlertooltipOpen}>
                         <span className={'fas fa-ellipsis-v'}></span>
                     </a>
                 </div>

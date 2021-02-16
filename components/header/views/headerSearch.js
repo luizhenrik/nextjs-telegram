@@ -4,10 +4,10 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function HeaderSearch() {
-  const { searchOpen, set_searchOpen } = useContext(GeneralContext)
+  const { searchOpen, setsearchOpen } = useContext(GeneralContext)
 
-  const handlerSearchOpen = () => {
-    set_searchOpen(!searchOpen)
+  const handlersearchOpen = () => {
+    setsearchOpen(!searchOpen)
 
     const icons = document.querySelectorAll('.js-user-selecting-icon')
 
@@ -19,7 +19,7 @@ export default function HeaderSearch() {
   return (
         <>
             <Headerstyle>
-                <a className={'header__handler'} onClick={handlerSearchOpen}>
+                <a className={'header__handler'} onClick={handlersearchOpen}>
                     <i className={'fas fa-arrow-left'}></i>
                 </a>
 

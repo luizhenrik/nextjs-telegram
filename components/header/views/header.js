@@ -4,20 +4,20 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function Header() {
-  const { searchOpen, set_searchOpen, sidebarOpen, set_sidebarOpen } = useContext(GeneralContext)
+  const { searchOpen, setsearchOpen, sidebarOpen, setSidebarOpen } = useContext(GeneralContext)
 
-  const handlerSidebarOpen = () => {
-    set_sidebarOpen(!sidebarOpen)
+  const handlersidebarOpen = () => {
+    setSidebarOpen(!sidebarOpen)
   }
 
-  const handlerSearchOpen = () => {
-    set_searchOpen(!searchOpen)
+  const handlersearchOpen = () => {
+    setsearchOpen(!searchOpen)
   }
 
   return (
         <>
             <Headerstyle>
-                <a className={'header__handler'} onClick={handlerSidebarOpen}>
+                <a className={'header__handler'} onClick={handlersidebarOpen}>
                     <span className={'fas fa-bars'}></span>
                 </a>
 
@@ -26,7 +26,7 @@ export default function Header() {
                         <h3 className={'header__title'}>{'Xirrim'}</h3>
                     </div>
 
-                    <a className={'header__handler'} onClick={handlerSearchOpen}>
+                    <a className={'header__handler'} onClick={handlersearchOpen}>
                         <span className={'fas fa-search'}></span>
                     </a>
                 </div>

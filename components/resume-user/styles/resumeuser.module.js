@@ -4,7 +4,7 @@ const sizehandler = '45px'
 
 export const Resumeuserstyle = styled.div`
     width: 100%;
-    flex: 0 1 100%;
+    /* flex: 0 1 100%; */
     border: none;
     position: relative;
     display: flex;
