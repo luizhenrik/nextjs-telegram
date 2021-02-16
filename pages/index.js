@@ -41,7 +41,7 @@ function Home({ chatsList }) {
 }
 
 Home.getInitialProps = async (ctx) => {
-  const resChatsList = await fetch('https://xirrim.com/api/basic')
+  const resChatsList = await fetch('https://xirrim.com/api/conversations')
   const chatsList = await resChatsList.json()
 
   return {
