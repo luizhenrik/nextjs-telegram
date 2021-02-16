@@ -1,9 +1,6 @@
-import { useContext } from 'react'
-
-import { GeneralContext } from '../../../contexts/general'
 
 async function conversations(request, response) {
-  const { hostUrl } = useContext(GeneralContext)
+  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
   const resChat = await fetch(`${hostUrl}/api/chats`)
   const chat = await resChat.json()
 

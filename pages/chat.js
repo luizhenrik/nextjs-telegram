@@ -47,8 +47,7 @@ function Chat({ chat }) {
 }
 
 Chat.getInitialProps = async (ctx) => {
-  const { hostUrl } = useContext(GeneralContext)
-
+  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
   const resChat = await fetch(`${hostUrl}/api/chats`)
   const chat = await resChat.json()
 

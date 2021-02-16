@@ -12,7 +12,6 @@ import { Appstyle } from '../styles/app'
 
 function Home({ chatsList }) {
   const { searchOpen, headerDetailsOpen } = useContext(GeneralContext)
-
   return (
         <Appstyle>
             <Head>
@@ -41,8 +40,7 @@ function Home({ chatsList }) {
 }
 
 Home.getInitialProps = async (ctx) => {
-  const { hostUrl } = useContext(GeneralContext)
-
+  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
   const resChatsList = await fetch(`${hostUrl}/api/conversations`)
   const chatsList = await resChatsList.json()
 
