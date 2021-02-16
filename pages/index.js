@@ -40,8 +40,7 @@ function Home({ chatsList }) {
 }
 
 Home.getInitialProps = async (ctx) => {
-  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
-  const resChatsList = await fetch(`${hostUrl}/api/conversations`)
+  const resChatsList = await fetch('https://xirrim.com/api/conversations')
   const chatsList = await resChatsList.json()
 
   return {

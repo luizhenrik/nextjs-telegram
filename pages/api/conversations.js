@@ -1,7 +1,6 @@
 
 async function conversations(request, response) {
-  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
-  const resChat = await fetch(`${hostUrl}/api/chats`)
+  const resChat = await fetch('https://xirrim.com/api/chats')
   const chat = await resChat.json()
 
   const data = [
