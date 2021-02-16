@@ -20,6 +20,7 @@ async function conversations(request, response) {
   data.map((value, index) => {
     const arr = chat[data[index].chatId].messages.length
     data[index].messages = chat[data[index].chatId].messages[arr - 1]
+    data[index].messages.name = data[index].name
   })
 
   response.status(200).json(data)
