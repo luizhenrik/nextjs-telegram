@@ -55,6 +55,8 @@ handler.get(async (req, res) => {
 
   for (let i = 0; i < chatsIds.length; i++) {
     if (messagesExcerpt[i]) {
+      messagesExcerpt[i].user_id = messagesExcerpt[i].user_id === myId ? 'eu' : messagesExcerpt[i].user_id
+
       result.push({
         chatId: chatsIds[i],
         userId: usersIds[i],
