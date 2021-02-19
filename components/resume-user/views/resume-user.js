@@ -32,8 +32,8 @@ export default function ResumeUser({ data }) {
                         className={'resume-user__avatar'}></Image>
 
                         <div className={'resume-user__container'}>
-                            <span className={'resume-user__nickname'}>{data.name}</span>
-                            <span className={'resume-user__text'}><strong>{`${data.messages.username}: `}</strong>{`${data.messages.text}`}</span>
+                            <span className={'resume-user__nickname'}>{data.username}</span>
+                            <span className={'resume-user__text'}><strong>{`${data.username}: `}</strong>{`${data.excerpt.text}`}</span>
                         </div>
                     </a>
                 </Link>
