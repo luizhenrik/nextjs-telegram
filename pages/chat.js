@@ -58,11 +58,7 @@ export async function getServerSideProps({ query }) {
 
   const messages = await db.collection('messages')
 
-  const messagesJson = await messages.find({ chat_id: { $exists: chatId } }).toArray().then(function(items) {
-    return items
-  }).catch(function(err) {
-    console.error(`deu b.o: ${err}`)
-  })
+  const messagesJson = await messages.find({ chat_id: { $exists: chatId } }).toArray()
 
   return {
     props: {

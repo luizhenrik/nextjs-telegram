@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import React, { useContext } from 'react'
 import { connectToDatabase } from '../util/mongodb'
+import { useRouter } from 'next/router'
 
 import Header from '../components/header/views/header'
 import HeaderSearch from '../components/header/views/headerSearch'
@@ -13,6 +14,11 @@ import { Appstyle } from '../styles/app'
 
 function Home({ chatsList }) {
   const { searchOpen, headerDetailsOpen } = useContext(GeneralContext)
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    return <></>
+  }
   return (
         <Appstyle>
             <Head>

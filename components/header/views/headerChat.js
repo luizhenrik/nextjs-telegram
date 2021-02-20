@@ -13,7 +13,6 @@ export default function HeaderChat({ data }) {
   }
 
   return (
-        <>
             <Headerstyle>
                 <Link href={'/'}>
                     <a className={'header__handler'}>
@@ -40,6 +39,5 @@ export default function HeaderChat({ data }) {
                     </a>
                 </div>
             </Headerstyle>
-        </>
   )
 }
