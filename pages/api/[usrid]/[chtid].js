@@ -1,4 +1,5 @@
 import { connectToDatabase } from '../../../util/mongodb'
+import { server } from '../../../config'
 
 export default async function handler(req, res) {
   const chatId = req.query.chtid
@@ -7,14 +8,16 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase()
 
   const messages = await db.collection('messages')
-  const users = await db.collection('users')
 
-  const messagesJson = await messages.find({ chat_id: { $exists: chatId } }).toArray()
-  const usersJson = await users.find({ _id: { $exists: userId } }).toArray()
+  const messagesJson = await messages.find({ chat_id: { $in: [chatId] } }).toArray()
+
+  const resUser = await fetch(`${server}/api/${userId}`)
+  const user = await resUser.json()
 
   res.json({
     id: chatId,
-    username: usersJson[0].nickname,
+    userId: userId,
+    username: user.username,
     messages: messagesJson[0].messages
   })
 }

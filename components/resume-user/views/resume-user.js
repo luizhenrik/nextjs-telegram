@@ -32,7 +32,7 @@ export default function ResumeUser({ data }) {
 
                     <div className={'resume-user__container'}>
                         <span className={'resume-user__nickname'}>{data.username}</span>
-                        <span className={'resume-user__text'}><strong>{`${data.username}: `}</strong>{`${data.excerpt.text}`}</span>
+                        <span className={'resume-user__text'}><strong>{`${data.username}: `}</strong>{`${data.messages.text}`}</span>
                     </div>
                 </a>
             </Link>

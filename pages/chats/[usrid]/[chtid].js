@@ -61,7 +61,7 @@ export async function getServerSideProps({ query }) {
   return {
     props: {
       chat: chat,
-      revalidate: 30
+      revalidate: 60
     }
   }
 }
