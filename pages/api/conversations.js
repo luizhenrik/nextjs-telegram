@@ -1,11 +1,8 @@
-import nextConnect from 'next-connect'
-import middleware from '../../config/mongodb'
+import { connectToDatabase } from '../../util/mongodb'
 
-const handler = nextConnect()
+export default async (req, res) => {
+  const { db } = await connectToDatabase()
 
-handler.use(middleware)
-
-handler.get(async (req, res) => {
   const myId = '602f19110880daeef6955fa1'
   const result = []
   const chatsIds = []
@@ -13,9 +10,9 @@ handler.get(async (req, res) => {
   const usersUsernames = []
   const messagesExcerpt = []
 
-  const chats = await req.db.collection('chats')
-  const messages = await req.db.collection('messages')
-  const users = await req.db.collection('users')
+  const chats = await db.collection('chats')
+  const messages = await db.collection('messages')
+  const users = await db.collection('users')
 
   const chatsJson = await chats.find({ 'users.user_id': { $exists: [myId] } }).toArray().then(function(items) {
     return items
@@ -67,6 +64,4 @@ handler.get(async (req, res) => {
   }
 
   res.json(result)
-})
-
-export default handler
+}
