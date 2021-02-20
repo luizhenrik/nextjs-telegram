@@ -1,7 +1,6 @@
 
 import Head from 'next/head'
 import React, { useContext } from 'react'
-import { useRouter } from 'next/router'
 import { server } from '../../../config'
 
 import HeaderSearch from '../../../components/header/views/headerSearch'
@@ -16,11 +15,7 @@ import { Appstyle } from '../../../styles/app'
 function Chat({ chat }) {
   const { searchOpen } = useContext(GeneralContext)
   const messages = chat.messages
-  const { isFallback } = useRouter()
-
-  if (isFallback) {
-    return <></>
-  }
+  chat.myUserId = '602f19110880daeef6955fa1'
 
   return (
         <Appstyle>

@@ -14,7 +14,7 @@ export default function HeaderChat({ data }) {
 
   return (
             <Headerstyle>
-                <Link href={'/'}>
+                <Link href={`/chats/${data.myUserId}/list`}>
                     <a className={'header__handler'}>
                         <span className={'fas fa-arrow-left'}></span>
                     </a>
