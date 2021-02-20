@@ -7,7 +7,7 @@ export const GeneralProvider = ({ children }) => {
   const [tooltipOpen, setTooltipOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [headerDetailsOpen, setHeaderDetailsOpen] = useState(false)
-  const hostUrl = process.env.ENVIROMENT === 'production' ? 'https://xirrim.com' : 'http://localhost:3000'
+  const [loading, setLoading] = React.useState(false)
 
   return (
         <GeneralContext.Provider
@@ -20,7 +20,8 @@ export const GeneralProvider = ({ children }) => {
           setSidebarOpen,
           headerDetailsOpen,
           setHeaderDetailsOpen,
-          hostUrl
+          loading,
+          setLoading
         }}>
             {children}
         </GeneralContext.Provider>

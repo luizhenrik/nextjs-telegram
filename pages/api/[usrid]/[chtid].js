@@ -8,8 +8,8 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase()
 
   const messages = await db.collection('messages')
-
-  const messagesJson = await messages.find({ chat_id: { $in: [chatId] } }).toArray()
+  messages.createIndex({ timestamp: 1 })
+  const messagesJson = await messages.find({ chat_id: { $in: [chatId] } }, { messages: 1, timestamp: 1 }).sort({ timestamp: -1 }).toArray()
 
   const resUser = await fetch(`${server}/api/${userId}`)
   const user = await resUser.json()

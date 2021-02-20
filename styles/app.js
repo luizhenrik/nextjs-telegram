@@ -29,4 +29,15 @@ export const Appstyle = styled.div`
         overflow: auto;
         max-height: 100%;
     }
+
+    .app__title {
+        width: 100%;
+        height: 100%;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: ${props => props.theme.colors.text};
+    }
 `

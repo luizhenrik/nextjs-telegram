@@ -9,8 +9,8 @@ export default async function handler(req, res) {
   const result = []
 
   const chats = await db.collection('chats')
-
-  const chatsJson = await chats.find({ 'users.user_id': { $exists: [myUserId] } }).toArray()
+  chats.createIndex({ timestamp: 1 })
+  const chatsJson = await chats.find({ 'users.user_id': { $exists: [myUserId] } }, { timestamp: 1, users: 1 }).sort({ timestamp: -1 }).toArray()
 
   const getMessage = async (chatId) => {
     const resChat = await fetch(`${server}/api/${myUserId}/${chatId}`)

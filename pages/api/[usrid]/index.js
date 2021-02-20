@@ -8,7 +8,8 @@ export default async function handler(req, res) {
   const { db } = await connectToDatabase()
 
   const users = await db.collection('users')
-  const usersJson = await users.find({ _id: u_id }).toArray()
+  users.createIndex({ timestamp: 1 })
+  const usersJson = await users.find({ _id: u_id }, { timestamp: 1, nickname: 1 }).sort({ timestamp: -1 }).toArray()
 
   res.json({
     userId: userId,
