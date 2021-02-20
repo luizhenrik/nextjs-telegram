@@ -49,7 +49,7 @@ function Home({ chatsList }) {
 //   }
 // }
 
-export async function getServerSideProps({ query }) {
+export async function getStaticProps({ query }) {
   const { db } = await connectToDatabase()
 
   const myId = '602f19110880daeef6955fa1'
@@ -101,8 +101,6 @@ export async function getServerSideProps({ query }) {
 
   for (let i = 0; i < chatsIds.length; i++) {
     if (messagesExcerpt[i]) {
-    //   messagesExcerpt[i].user_id = messagesExcerpt[i].user_id === myId ? 'eu' : messagesExcerpt[i].user_id
-
       result.push({
         chatId: chatsIds[i],
         userId: usersIds[i],

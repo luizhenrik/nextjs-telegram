@@ -14,8 +14,6 @@ import { Appstyle } from '../styles/app'
 // eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
   const { searchOpen } = useContext(GeneralContext)
-  //   const router = useRouter()
-  //   const { chatId } = router.query
   const messages = chat.messages
 
   return (
@@ -51,9 +49,6 @@ export async function getServerSideProps({ query }) {
   const chatId = query.chatId
   const username = query.username
   const { db } = await connectToDatabase()
-  const result = []
-  const chatsIds = []
-  const messagesList = []
 
   const messages = await db.collection('messages')
 
@@ -62,17 +57,6 @@ export async function getServerSideProps({ query }) {
   }).catch(function(err) {
     console.error(`deu b.o: ${err}`)
   })
-
-  for (let i = 0; i < messagesJson.length; i++) {
-    messagesList.push(messagesJson[i].messages[messagesJson[i].messages.length - 1])
-  }
-
-  for (let i = 0; i < chatsIds.length; i++) {
-    result.push({
-      username: username,
-      messages: messagesList[i]
-    })
-  }
 
   return {
     props: {
