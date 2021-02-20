@@ -42,6 +42,7 @@ function ListConversations({ chatsList }) {
                 <div className={'app__container'}>
                     {loading
                       ? (
+
                             <h1 className={'app__title'}>Conectando...</h1>
                         )
                       : (
