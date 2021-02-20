@@ -30,7 +30,7 @@ export default function HeaderChat({ data }) {
                     />
 
                     <div className={'header__container'}>
-                        <h3 className={'header__title'}>{`${data.name}`}</h3>
+                        <h3 className={'header__title'}>{`${data.username}`}</h3>
 
                         <span className={'header__description'}>{'Online'}</span>
                     </div>
