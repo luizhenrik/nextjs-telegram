@@ -1,16 +1,16 @@
 
 import Head from 'next/head'
 import React, { useContext } from 'react'
-import { connectToDatabase } from '../util/mongodb'
 import { useRouter } from 'next/router'
+import { server } from '../../../config'
 
-import HeaderSearch from '../components/header/views/headerSearch'
-import HeaderChat from '../components/header/views/headerChat'
-import Tooltip from '../components/tooltip/views/tooltip'
-import Message from '../components/messages/views/message'
+import HeaderSearch from '../../../components/header/views/headerSearch'
+import HeaderChat from '../../../components/header/views/headerChat'
+import Tooltip from '../../../components/tooltip/views/tooltip'
+import Message from '../../../components/messages/views/message'
 
-import { GeneralContext } from '../contexts/general'
-import { Appstyle } from '../styles/app'
+import { GeneralContext } from '../../../contexts/general'
+import { Appstyle } from '../../../styles/app'
 
 // eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
@@ -43,7 +43,7 @@ function Chat({ chat }) {
 
                 <div className={'app__container'}>
                     {messages.map((value, index) => (
-                        <Message data={messages[index]}></Message>
+                        <Message key={index} data={value}></Message>
                     ))}
                 </div>
             </main>
@@ -52,21 +52,15 @@ function Chat({ chat }) {
 }
 
 export async function getServerSideProps({ query }) {
-  const chatId = query.chatId
-  const username = query.username
-  const { db } = await connectToDatabase()
+  const chatId = query.chtid
+  const userId = query.usrid
 
-  const messages = await db.collection('messages')
-
-  const messagesJson = await messages.find({ chat_id: { $exists: chatId } }).toArray()
+  const res = await fetch(`${server}/api/${userId}/${chatId}`)
+  const chat = await res.json()
 
   return {
     props: {
-      chat: {
-        id: chatId,
-        username: username,
-        messages: messagesJson[0].messages
-      },
+      chat: chat,
       revalidate: 30
     }
   }

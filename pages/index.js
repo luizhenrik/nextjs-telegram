@@ -38,7 +38,7 @@ function Home({ chatsList }) {
                 <Sidebar></Sidebar>
                 <div className={'app__container'}>
                     {chatsList.map((value, index) => (
-                        <ResumeUser data={value}></ResumeUser>
+                        <ResumeUser key={index} data={value}></ResumeUser>
                     ))}
                 </div>
             </main>
