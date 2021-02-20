@@ -2,6 +2,7 @@
 import Head from 'next/head'
 import React, { useContext } from 'react'
 import { connectToDatabase } from '../util/mongodb'
+import { useRouter } from 'next/router'
 
 import HeaderSearch from '../components/header/views/headerSearch'
 import HeaderChat from '../components/header/views/headerChat'
@@ -15,6 +16,11 @@ import { Appstyle } from '../styles/app'
 function Chat({ chat }) {
   const { searchOpen } = useContext(GeneralContext)
   const messages = chat.messages
+  const { isFallback } = useRouter()
+
+  if (isFallback) {
+    return <></>
+  }
 
   return (
         <Appstyle>
@@ -65,7 +71,7 @@ export async function getServerSideProps({ query }) {
         username: username,
         messages: messagesJson[0].messages
       },
-      revalidate: 1
+      revalidate: 30
     }
   }
 }

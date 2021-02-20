@@ -19,33 +19,31 @@ export default function ResumeUser({ data }) {
   }
 
   return (
-        <>
-            <Resumeuserstyle>
-                <Link href={`/chat?chatId=${data.chatId}&username=${data.username}`}>
-                    <a className={'resume-user__content'}>
-                        <Image
-                        src={'https://xirrim.com/images/user.png'}
-                        alt={'nickname'}
-                        layout={'intrinsic'}
-                        width={'52'}
-                        height={'52'}
-                        className={'resume-user__avatar'}></Image>
+        <Resumeuserstyle>
+            <Link href={`/chat?chatId=${data.chatId}&username=${data.username}`}>
+                <a className={'resume-user__content'}>
+                    <Image
+                    src={'https://xirrim.com/images/user.png'}
+                    alt={'nickname'}
+                    layout={'intrinsic'}
+                    width={'52'}
+                    height={'52'}
+                    className={'resume-user__avatar'}></Image>
 
-                        <div className={'resume-user__container'}>
-                            <span className={'resume-user__nickname'}>{data.username}</span>
-                            <span className={'resume-user__text'}><strong>{`${data.username}: `}</strong>{`${data.excerpt.text}`}</span>
-                        </div>
-                    </a>
-                </Link>
-
-                <a
-                className={`${'resume-user__handler'} js-user-selecting-icon`}
-                data-selected={'false'}
-                data-clickable={!headerDetailsOpen}
-                onClick={handlerheaderDetailsOpen}>
-                    <span className={'far fa-check-circle'}></span>
+                    <div className={'resume-user__container'}>
+                        <span className={'resume-user__nickname'}>{data.username}</span>
+                        <span className={'resume-user__text'}><strong>{`${data.username}: `}</strong>{`${data.excerpt.text}`}</span>
+                    </div>
                 </a>
-            </Resumeuserstyle>
-        </>
+            </Link>
+
+            <a
+            className={`${'resume-user__handler'} js-user-selecting-icon`}
+            data-selected={'false'}
+            data-clickable={!headerDetailsOpen}
+            onClick={handlerheaderDetailsOpen}>
+                <span className={'far fa-check-circle'}></span>
+            </a>
+        </Resumeuserstyle>
   )
 }

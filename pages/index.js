@@ -40,16 +40,7 @@ function Home({ chatsList }) {
   )
 }
 
-// Home.getInitialProps = async (ctx) => {
-//   const resChatsList = await fetch('https://xirrim.com/api/conversations')
-//   const chatsList = await resChatsList.json()
-
-//   return {
-//     chatsList
-//   }
-// }
-
-export async function getStaticProps({ query }) {
+export async function getServerSideProps({ query }) {
   const { db } = await connectToDatabase()
 
   const myId = '602f19110880daeef6955fa1'
@@ -63,11 +54,7 @@ export async function getStaticProps({ query }) {
   const messages = await db.collection('messages')
   const users = await db.collection('users')
 
-  const chatsJson = await chats.find({ 'users.user_id': { $exists: [myId] } }).toArray().then(function(items) {
-    return items
-  }).catch(function(err) {
-    console.error(`deu b.o: ${err}`)
-  })
+  const chatsJson = await chats.find({ 'users.user_id': { $exists: [myId] } }).toArray()
 
   for (let i = 0; i < chatsJson.length; i++) {
     chatsIds.push(chatsJson[i]._id)
@@ -79,21 +66,13 @@ export async function getStaticProps({ query }) {
     }
   }
 
-  const messagesJson = await messages.find({ chat_id: { $exists: chatsIds } }).toArray().then(function(items) {
-    return items
-  }).catch(function(err) {
-    console.error(`deu b.o: ${err}`)
-  })
+  const messagesJson = await messages.find({ chat_id: { $exists: chatsIds } }).toArray()
 
   for (let i = 0; i < messagesJson.length; i++) {
     messagesExcerpt.push(messagesJson[i].messages[messagesJson[i].messages.length - 1])
   }
 
-  const usersJson = await users.find({ _id: { $exists: usersIds } }).toArray().then(function(items) {
-    return items
-  }).catch(function(err) {
-    console.error(`deu b.o: ${err}`)
-  })
+  const usersJson = await users.find({ _id: { $exists: usersIds } }).toArray()
 
   for (let i = 0; i < usersJson.length; i++) {
     usersUsernames.push(usersJson[i].nickname)
@@ -113,7 +92,7 @@ export async function getStaticProps({ query }) {
   return {
     props: {
       chatsList: JSON.parse(JSON.stringify(result)),
-      revalidate: 1
+      revalidate: 30
     }
   }
 }
