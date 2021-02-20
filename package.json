@@ -36,7 +36,6 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^1.1.0",
     "prettier": "^2.2.1",
-    "styled-components": "^5.2.1",
-    "undefined": "^0.1.0"
+    "styled-components": "^5.2.1"
   }
 }
