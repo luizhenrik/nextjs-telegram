@@ -114,7 +114,8 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      chatsList: JSON.parse(JSON.stringify(result))
+      chatsList: JSON.parse(JSON.stringify(result)),
+      revalidate: 1
     }
   }
 }

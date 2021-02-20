@@ -80,7 +80,8 @@ export async function getServerSideProps({ query }) {
         id: chatId,
         username: username,
         messages: messagesJson[0].messages
-      }
+      },
+      revalidate: 1
     }
   }
 }
