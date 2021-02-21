@@ -33,10 +33,10 @@ export default async function handler(req, res) {
   for (let i = 0; i < chatsJson.length; i++) {
     result.push({
       chatId: chatsJson[i]._id,
-      myUserId: myUserId
-    //   userId: chatsJson[i].users.find(x => x.user_id !== myUserId).user_id
-    //   username: await getUser(chatsJson[i].users.find(x => x.user_id !== myUserId).user_id),
-    //   messages: await getMessage(chatsJson[i]._id)
+      myUserId: myUserId,
+      userId: chatsJson[i].users.find(x => x.user_id !== myUserId).user_id,
+      username: await getUser(chatsJson[i].users.find(x => x.user_id !== myUserId).user_id),
+      messages: await getMessage(chatsJson[i]._id)
     })
   }
 
