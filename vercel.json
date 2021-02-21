@@ -3,8 +3,5 @@
     "version": 2,
     "env": {
         "MONGODB_URI": "@my-mongodb-uri"
-    },
-    "images": {
-        "domains": ["localhost:3000", "xirrim.com"]
     }
 }
