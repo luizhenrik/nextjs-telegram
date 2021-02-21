@@ -1,5 +1,5 @@
-import { connectToDatabase } from '../../../util/mongodb'
-import { server } from '../../../config'
+import { connectToDatabase } from '../../../../util/mongodb'
+import { server } from '../../../../config'
 
 export default async function handler(req, res) {
   const myUserId = req.query.usrid
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   const chatsJson = await chats.find({ 'users.user_id': { $exists: [myUserId] } }, { timestamp: 1, users: 1 }).sort({ timestamp: -1 }).toArray()
 
   const getMessage = async (chatId) => {
-    const resChat = await fetch(`${server}/api/${myUserId}/${chatId}`)
+    const resChat = await fetch(`${server}/api/chats/${myUserId}/${chatId}`)
     const chatsList = await resChat.json()
 
     const message = chatsList.messages[chatsList.messages.length - 1]
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   }
 
   const getUser = async (userId) => {
-    const resUser = await fetch(`${server}/api/${userId}`)
+    const resUser = await fetch(`${server}/api/chats/${userId}`)
     const user = await resUser.json()
 
     return user.username

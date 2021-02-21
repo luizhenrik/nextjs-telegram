@@ -84,14 +84,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const userId = JSON.parse(JSON.stringify(params))
 
-  const res = await fetch(`${server}/api/${userId.usrid}/list`)
+  const res = await fetch(`${server}/api/chats/${userId.usrid}/list`)
   const chatsList = await res.json()
 
   return {
     props: {
       chatsList: chatsList
     },
-    revalidate: 30
+    revalidate: 1
   }
 }
 

@@ -68,13 +68,13 @@ export async function getServerSideProps({ query }) {
   const chatId = query.chtid
   const userId = query.usrid
 
-  const res = await fetch(`${server}/api/${userId}/${chatId}`)
+  const res = await fetch(`${server}/api/chats/${userId}/${chatId}`)
   const chat = await res.json()
 
   return {
     props: {
       chat: chat,
-      revalidate: 60
+      revalidate: 1
     }
   }
 }
