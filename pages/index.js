@@ -9,7 +9,7 @@ import Sidebar from '../components/sidebar/views/sidebar'
 import { GeneralContext } from '../contexts/general'
 import { Appstyle } from '../styles/app'
 
-function ListConversations() {
+function Home() {
   const { loading, setLoading } = useContext(GeneralContext)
 
   React.useEffect(() => {
@@ -59,4 +59,4 @@ function ListConversations() {
   )
 }
 
-export default ListConversations
+export default Home
