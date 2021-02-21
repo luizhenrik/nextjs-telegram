@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useContext } from 'react'
-import { useRouter, Router } from 'next/router'
+import { Router } from 'next/router'
 import { server } from '../../../config'
 
 import Header from '../../../components/header/views/header'
@@ -14,11 +14,6 @@ import { Appstyle } from '../../../styles/app'
 
 function ListConversations({ chatsList }) {
   const { searchOpen, headerDetailsOpen, loading, setLoading } = useContext(GeneralContext)
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return <div className={'app__title'}>Loading...</div>
-  }
 
   React.useEffect(() => {
     const start = () => {
