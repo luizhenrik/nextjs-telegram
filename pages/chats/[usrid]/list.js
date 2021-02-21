@@ -90,8 +90,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       chatsList: chatsList
-    },
-    revalidate: 1
+    }
   }
 }
 
