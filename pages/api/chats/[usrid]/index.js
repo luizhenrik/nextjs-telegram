@@ -5,9 +5,9 @@ export default async function handler(req, res) {
   const userId = req.query.usrid
   const u_id = new ObjectId(userId)
 
-  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
-
   const { db } = await connectToDatabase()
+
+  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
 
   const users = await db.collection('users')
   const usersJson = await users.find({ _id: u_id }, { nickname: 1 }).toArray()

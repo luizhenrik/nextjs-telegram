@@ -2,10 +2,11 @@ import { connectToDatabase } from '../../../../util/mongodb'
 import { server } from '../../../../config'
 
 export default async function handler(req, res) {
-  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
   const myUserId = req.query.usrid
 
   const { db } = await connectToDatabase()
+
+  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
 
   const result = []
 
@@ -13,20 +14,20 @@ export default async function handler(req, res) {
   const chatsJson = await chats.find({ 'users.user_id': { $exists: [myUserId] } }).toArray()
 
   const getMessage = async (chatId) => {
-    const response = await fetch(`${server}/api/chats/${myUserId}/${chatId}`)
+    const resMessage = await fetch(`${server}/api/chats/${myUserId}/${chatId}`)
 
-    let data = await response.json()
+    let dataMessage = await resMessage.json()
 
-    data = data.messages[data.messages.length - 1]
+    dataMessage = dataMessage.messages[dataMessage.messages.length - 1]
 
-    return data
+    return dataMessage
   }
 
   const getUser = async (userId) => {
-    const response = await fetch(`${server}/api/chats/${userId}`)
-    const data = await response.json()
+    const resUser = await fetch(`${server}/api/chats/${userId}`)
+    const dataUser = await resUser.json()
 
-    return data.username
+    return dataUser.username
   }
 
   for (let i = 0; i < chatsJson.length; i++) {
