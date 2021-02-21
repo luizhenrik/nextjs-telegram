@@ -1,3 +1,3 @@
 const dev = process.env.NODE_ENV !== 'production'
 
-export const server = dev ? 'http://localhost:3000' : 'https://xirrim.com'
+export const server = dev ? 'https://xirrim.com' : 'https://xirrim.com'
