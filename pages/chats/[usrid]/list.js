@@ -71,20 +71,11 @@ function ListConversations({ chatsList }) {
         </Appstyle>
   )
 }
-export async function getStaticPaths() {
-  return {
-    // Only `/posts/1` and `/posts/2` are generated at build time
-    paths: [{ params: { usrid: '602f19110880daeef6955fa1' } }],
-    // Enable statically generating additional pages
-    // For example: `/posts/3`
-    fallback: true
-  }
-}
 
-export async function getStaticProps({ params }) {
-  const userId = JSON.parse(JSON.stringify(params))
+export async function getServerSideProps({ query }) {
+  const userId = '602f19110880daeef6955fa1'
 
-  const res = await fetch(`${server}/api/chats/${userId.usrid}/list`)
+  const res = await fetch(`${server}/api/chats/${userId}/list`)
   const chatsList = await res.json()
 
   return {
