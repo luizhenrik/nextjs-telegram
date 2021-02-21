@@ -9,8 +9,9 @@ import Sidebar from '../components/sidebar/views/sidebar'
 import { GeneralContext } from '../contexts/general'
 import { Appstyle } from '../styles/app'
 
-function ListConversations({ chatsList }) {
-  const { searchOpen, headerDetailsOpen, loading, setLoading } = useContext(GeneralContext)
+function ListConversations() {
+  const { loading, setLoading } = useContext(GeneralContext)
+
   React.useEffect(() => {
     const start = () => {
       console.log('start')
