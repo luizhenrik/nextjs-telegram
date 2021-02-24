@@ -1,8 +1,8 @@
 
 import Head from 'next/head'
 import React, { useContext, useEffect } from 'react'
-import { server } from '../../../config'
 import { Router } from 'next/router'
+import { server } from '../../../config'
 
 import HeaderSearch from '../../../components/header/views/headerSearch'
 import HeaderChat from '../../../components/header/views/headerChat'
@@ -16,28 +16,31 @@ import { Appstyle } from '../../../styles/app'
 function Chat({ chat }) {
   const { searchOpen, setLoading, loading } = useContext(GeneralContext)
 
-  const messages = chat.messages
-
-  chat.myUserId = '602f19110880daeef6955fa1'
-
   useEffect(() => {
     const start = () => {
       console.log('start')
       setLoading(true)
     }
+
     const end = () => {
       console.log('findished')
       setLoading(false)
     }
+
     Router.events.on('routeChangeStart', start)
     Router.events.on('routeChangeComplete', end)
     Router.events.on('routeChangeError', end)
+
     return () => {
       Router.events.off('routeChangeStart', start)
       Router.events.off('routeChangeComplete', end)
       Router.events.off('routeChangeError', end)
     }
   }, [])
+
+  const messages = chat.messages
+
+  chat.myUserId = '602f19110880daeef6955fa1'
 
   return (
         <Appstyle>

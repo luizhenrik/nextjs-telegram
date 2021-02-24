@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 
   const { db } = await connectToDatabase()
 
-  res.setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate')
+  res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate')
 
   const messages = await db.collection('messages')
   const messagesJson = await messages.find({ chat_id: { $all: [chatId] } }).toArray()
