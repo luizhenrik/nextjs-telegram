@@ -27,15 +27,17 @@ export default async function handler(req, res) {
     const resUser = await fetch(`${server}/api/chats/${userId}`)
     const dataUser = await resUser.json()
 
-    return dataUser.username
+    return dataUser
   }
 
   for (let i = 0; i < chatsJson.length; i++) {
+    const user = await getUser(chatsJson[i].users.find(x => x.user_id !== myUserId).user_id)
     result.push({
       chatId: chatsJson[i]._id,
       myUserId: myUserId,
       userId: chatsJson[i].users.find(x => x.user_id !== myUserId).user_id,
-      username: await getUser(chatsJson[i].users.find(x => x.user_id !== myUserId).user_id),
+      username: user.username,
+      userAvatar: user.avatar,
       messages: await getMessage(chatsJson[i]._id)
     })
   }

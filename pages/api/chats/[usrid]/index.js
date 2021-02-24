@@ -14,6 +14,7 @@ export default async function handler(req, res) {
 
   res.json({
     userId: userId,
-    username: usersJson[0].nickname
+    username: usersJson[0].nickname,
+    avatar: usersJson[0].avatar
   })
 }

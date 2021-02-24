@@ -11,6 +11,7 @@ import Message from '../../../components/messages/views/message'
 
 import { GeneralContext } from '../../../contexts/general'
 import { Appstyle } from '../../../styles/app'
+import FormChat from '../../../components/form-chat/views/form-chat'
 
 // eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
@@ -57,9 +58,12 @@ function Chat({ chat }) {
                             <h1 className={'app__title'}>Loading...</h1>
                         )
                       : (
-                          messages.map((value, index) => (
+                          <>
+                          {messages.map((value, index) => (
                             <Message key={index} data={value}></Message>
-                          ))
+                          ))}
+                          <FormChat></FormChat>
+                          </>
                         )}
                 </div>
             </main>

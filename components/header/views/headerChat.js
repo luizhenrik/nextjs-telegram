@@ -21,7 +21,7 @@ export default function HeaderChat({ data }) {
                 </Link>
                 <div className={'header__container'}>
                     <Image
-                        src={'https://xirrim.com/images/user.png'}
+                        src={`https://xirrim.com/uploads/${data.userAvatar}`}
                         alt={`${data.name}`}
                         width={'45'}
                         height={'45'}

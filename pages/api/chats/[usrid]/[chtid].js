@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     id: chatId,
     userId: userId,
     username: user.username,
+    userAvatar: user.avatar,
     messages: messagesJson[0].messages
   })
 }
