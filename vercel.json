@@ -2,6 +2,6 @@
     "name": "nextjs-telegram",
     "version": 2,
     "env": {
-        "MONGODB_URI": "@my-mongodb-uri"
+        "MONGODB_URI": "@my-mongodb-uri-2"
     }
 }

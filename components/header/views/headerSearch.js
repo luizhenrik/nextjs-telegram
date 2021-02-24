@@ -4,10 +4,10 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function HeaderSearch() {
-  const { searchOpen, setsearchOpen } = useContext(GeneralContext)
+  const { searchOpen, setSearchOpen } = useContext(GeneralContext)
 
   const handlersearchOpen = () => {
-    setsearchOpen(!searchOpen)
+    setSearchOpen(!searchOpen)
 
     const icons = document.querySelectorAll('.js-user-selecting-icon')
 

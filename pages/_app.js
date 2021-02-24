@@ -8,10 +8,10 @@ import theme from '../styles/theme'
 function MyApp({ Component, pageProps }) {
   return (
         <ThemeProvider theme={theme}>
-                <GeneralProvider>
-                    <Component {...pageProps} />
-                </GeneralProvider>
-                <GlobalStyle />
+            <GeneralProvider>
+                <Component {...pageProps} />
+            </GeneralProvider>
+            <GlobalStyle />
         </ThemeProvider>
   )
 }

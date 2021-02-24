@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Router } from 'next/router'
 import { server } from '../../../config'
 
@@ -15,7 +15,7 @@ import { Appstyle } from '../../../styles/app'
 function ListConversations({ chatsList }) {
   const { searchOpen, headerDetailsOpen, loading, setLoading } = useContext(GeneralContext)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const start = () => {
       console.log('start')
       setLoading(true)

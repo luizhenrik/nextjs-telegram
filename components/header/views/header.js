@@ -4,14 +4,14 @@ import { GeneralContext } from '../../../contexts/general'
 import { Headerstyle } from '../styles/header.module'
 
 export default function Header() {
-  const { searchOpen, setsearchOpen, sidebarOpen, setSidebarOpen } = useContext(GeneralContext)
+  const { searchOpen, setSearchOpen, sidebarOpen, setSidebarOpen } = useContext(GeneralContext)
 
   const handlersidebarOpen = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
   const handlersearchOpen = () => {
-    setsearchOpen(!searchOpen)
+    setSearchOpen(!searchOpen)
   }
 
   return (

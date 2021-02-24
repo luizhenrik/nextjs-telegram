@@ -1,6 +1,6 @@
 
 import Head from 'next/head'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { server } from '../../../config'
 import { Router } from 'next/router'
 
@@ -20,7 +20,7 @@ function Chat({ chat }) {
 
   chat.myUserId = '602f19110880daeef6955fa1'
 
-  React.useEffect(() => {
+  useEffect(() => {
     const start = () => {
       console.log('start')
       setLoading(true)
