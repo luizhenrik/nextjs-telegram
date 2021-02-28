@@ -2,16 +2,16 @@
 import Head from 'next/head'
 import React, { useContext, useEffect } from 'react'
 import { Router } from 'next/router'
-import { server } from '../../../config'
+import { server } from '../../config'
 
-import HeaderSearch from '../../../components/header/views/headerSearch'
-import HeaderChat from '../../../components/header/views/headerChat'
-import Tooltip from '../../../components/tooltip/views/tooltip'
-import Message from '../../../components/messages/views/message'
+import HeaderSearch from '../../components/header/views/headerSearch'
+import HeaderChat from '../../components/header/views/headerChat'
+import Tooltip from '../../components/tooltip/views/tooltip'
+import Message from '../../components/messages/views/message'
 
-import { GeneralContext } from '../../../contexts/general'
-import { Appstyle } from '../../../styles/app'
-import FormChat from '../../../components/form-chat/views/form-chat'
+import { GeneralContext } from '../../contexts/general'
+import { Appstyle } from '../../styles/app'
+import FormChat from '../../components/form-chat/views/form-chat'
 
 // eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
@@ -73,9 +73,8 @@ function Chat({ chat }) {
 
 export async function getServerSideProps({ query }) {
   const chatId = query.chtid
-  const userId = query.usrid
 
-  const res = await fetch(`${server}/api/chats/${userId}/${chatId}`)
+  const res = await fetch(`${server}/api/chats/${chatId}`)
   const chat = await res.json()
 
   return {
