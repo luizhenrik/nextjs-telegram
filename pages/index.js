@@ -27,7 +27,7 @@ function Home() {
                             <h1 className={'app__title'}>Conectando...</h1>
                         )
                       : (
-                            <Link prefetch={false} as={'/chats/602f19110880daeef6955fa1/list'} href={'/chats/[usrid]/list'}>
+                            <Link prefetch={false} as={'/chats'} href={'/chats'}>
                                 <a className={'app__title'}>
                                     Clique aqui para conectar no app
                                 </a>
