@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React, { useContext, useEffect } from 'react'
 import Link from 'next/link'
 import { Router } from 'next/router'
-import { connectToDatabase } from '../util/mongodb'
 
 import Header from '../components/header/views/header'
 import Sidebar from '../components/sidebar/views/sidebar'
@@ -12,7 +11,6 @@ import { Appstyle } from '../styles/app'
 
 function Home() {
   const { loading, setLoading } = useContext(GeneralContext)
-  const { db } = await connectToDatabase()
 
   useEffect(() => {
     const start = () => {
