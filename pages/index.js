@@ -33,6 +33,7 @@ function Home() {
       Router.events.off('routeChangeError', end)
     }
   }, [])
+
   return (
         <Appstyle>
             <Head>
