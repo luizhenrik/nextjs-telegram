@@ -61,7 +61,7 @@ export default async function handler(req, res) {
     {
       $unwind: '$users_data'
     }
-  ])
+  ]).toArray()
 
   // res.json(chat)
   res.json({

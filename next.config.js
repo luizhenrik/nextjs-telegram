@@ -10,5 +10,8 @@ module.exports = {
     },
     paths: {
       "@/*": ["./*"]
+    },
+    api: {
+        bodyParser: false,
     }
 }

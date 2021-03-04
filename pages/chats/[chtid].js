@@ -13,7 +13,6 @@ import { GeneralContext } from '../../contexts/general'
 import { Appstyle } from '../../styles/app'
 import FormChat from '../../components/form-chat/views/form-chat'
 
-// eslint-disable-next-line react/prop-types
 function Chat({ chat }) {
   const { searchOpen, setLoading, loading } = useContext(GeneralContext)
 
