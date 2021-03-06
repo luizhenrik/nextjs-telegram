@@ -19,7 +19,7 @@ export const MessageStyle = styled.div`
         z-index: 1;
     }
 
-    &:nth-child(1) {
+    &:nth-of-type(1) {
         margin-top: auto;
     }
 

@@ -1,41 +1,19 @@
 import Head from 'next/head'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { server } from '../../config'
-import { Router } from 'next/router'
 
 import Header from '../../components/header/views/header'
 import HeaderSearch from '../../components/header/views/headerSearch'
 import HeaderDetails from '../../components/header/views/headerDetails'
 import Sidebar from '../../components/sidebar/views/sidebar'
 import ResumeUser from '../../components/resume-user/views/resume-user'
+import Loader from '../../components/loader/views/loader'
 
 import { GeneralContext } from '../../contexts/general'
 import { Appstyle } from '../../styles/app'
 
 function ListConversations({ chats }) {
-  const { searchOpen, headerDetailsOpen, loading, setLoading } = useContext(GeneralContext)
-
-  useEffect(() => {
-    const start = () => {
-      console.log('start')
-      setLoading(true)
-    }
-
-    const end = () => {
-      console.log('findished')
-      setLoading(false)
-    }
-
-    Router.events.on('routeChangeStart', start)
-    Router.events.on('routeChangeComplete', end)
-    Router.events.on('routeChangeError', end)
-
-    return () => {
-      Router.events.off('routeChangeStart', start)
-      Router.events.off('routeChangeComplete', end)
-      Router.events.off('routeChangeError', end)
-    }
-  }, [])
+  const { searchOpen, headerDetailsOpen } = useContext(GeneralContext)
 
   return (
         <Appstyle>
@@ -55,28 +33,34 @@ function ListConversations({ chats }) {
 
                 <Sidebar></Sidebar>
                 <div className={'app__container'}>
-                    {loading
-                      ? (
-                            <h1 className={'app__title'}>Loading...</h1>
-                        )
-                      : (
-                          chats.map((value, index) => (
-                            <ResumeUser key={index} data={value}></ResumeUser>
-                          ))
-                        )}
+                    <Loader />
+
+                    {chats.map((value, index) => (
+                        <ResumeUser key={index} data={value}></ResumeUser>
+                    ))}
                 </div>
             </main>
         </Appstyle>
   )
 }
 
-export async function getServerSideProps({ query }) {
-  const res = await fetch(`${server}/api/chats`)
-  const chatsList = await res.json()
+export async function getServerSideProps() {
+  const chats = await fetch(`${server}/api/chats`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      myUserId: '602f19110880daeef6955fa1'
+    })
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 
   return {
     props: {
-      chats: chatsList
+      chats: chats
     }
   }
 }

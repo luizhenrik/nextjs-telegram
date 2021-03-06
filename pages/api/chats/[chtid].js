@@ -2,8 +2,8 @@ import { connectToDatabase } from '../../../util/mongodb'
 import { ObjectId } from 'mongodb'
 
 export default async function handler(req, res) {
-  const chatId = new ObjectId(req.query.chtid)
-  const myuserId = new ObjectId('602f19110880daeef6955fa1')
+  const chatId = new ObjectId(req.body.chatId)
+  const myUserId = new ObjectId(req.body.myUserId)
 
   const { db } = await connectToDatabase()
 
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
                 as: 'user',
                 in: {
                   $cond: [
-                    { $ne: ['$$user._id', myuserId] },
+                    { $ne: ['$$user._id', myUserId] },
                     '$$user._id',
                     false
                   ]
@@ -63,9 +63,9 @@ export default async function handler(req, res) {
     }
   ]).toArray()
 
-  // res.json(chat)
   res.json({
     id: chatId,
+    myUserId: myUserId,
     userId: chat[0].users,
     username: chat[0].users_data.nickname,
     userAvatar: chat[0].users_data.avatar,

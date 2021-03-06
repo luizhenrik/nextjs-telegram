@@ -2,7 +2,7 @@ import { connectToDatabase } from '../../../util/mongodb'
 import { ObjectId } from 'mongodb'
 
 export default async function handler(req, res) {
-  const myuserId = new ObjectId('602f19110880daeef6955fa1')
+  const myUserId = new ObjectId(req.body.myUserId)
   const api = []
 
   const { db } = await connectToDatabase()
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   const chat = await chats.aggregate([
     {
-      $match: { 'users._id': { $eq: myuserId } }
+      $match: { 'users._id': { $eq: myUserId } }
     },
     {
       $lookup: {
@@ -38,14 +38,14 @@ export default async function handler(req, res) {
           $filter: {
             input: '$users',
             as: 'user',
-            cond: { $ne: ['$$user._id', myuserId] }
+            cond: { $ne: ['$$user._id', myUserId] }
           }
         },
         users_data: {
           $filter: {
             input: '$users_data',
             as: 'data',
-            cond: { $ne: ['$$data._id', myuserId] }
+            cond: { $ne: ['$$data._id', myUserId] }
           }
         },
         messages: { $slice: ['$messages', -1] }

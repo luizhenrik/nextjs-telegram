@@ -1,7 +1,6 @@
 
 import Head from 'next/head'
-import React, { useContext, useEffect } from 'react'
-import { Router } from 'next/router'
+import React, { useContext } from 'react'
 import { server } from '../../config'
 
 import HeaderSearch from '../../components/header/views/headerSearch'
@@ -12,35 +11,18 @@ import Message from '../../components/messages/views/message'
 import { GeneralContext } from '../../contexts/general'
 import { Appstyle } from '../../styles/app'
 import FormChat from '../../components/form-chat/views/form-chat'
+import Loader from '../../components/loader/views/loader'
 
 function Chat({ chat }) {
-  const { searchOpen, setLoading, loading } = useContext(GeneralContext)
-
-  useEffect(() => {
-    const start = () => {
-      console.log('start')
-      setLoading(true)
-    }
-
-    const end = () => {
-      console.log('findished')
-      setLoading(false)
-    }
-
-    Router.events.on('routeChangeStart', start)
-    Router.events.on('routeChangeComplete', end)
-    Router.events.on('routeChangeError', end)
-
-    return () => {
-      Router.events.off('routeChangeStart', start)
-      Router.events.off('routeChangeComplete', end)
-      Router.events.off('routeChangeError', end)
-    }
-  }, [])
+  const { searchOpen } = useContext(GeneralContext)
 
   const messages = chat.messages
 
-  chat.myUserId = '602f19110880daeef6955fa1'
+  const dataForm = {
+    myUserId: chat.myUserId,
+    user_id: chat.userId,
+    chatId: chat.id
+  }
 
   return (
         <Appstyle>
@@ -52,18 +34,11 @@ function Chat({ chat }) {
                     {searchOpen ? (<HeaderSearch></HeaderSearch>) : (<> <HeaderChat data={chat}></HeaderChat><Tooltip></Tooltip> </>)}
 
                 <div className={'app__container'}>
-                    {loading
-                      ? (
-                            <h1 className={'app__title'}>Loading...</h1>
-                        )
-                      : (
-                          <>
-                          {messages.map((value, index) => (
-                            <Message key={index} data={value}></Message>
-                          ))}
-                          <FormChat></FormChat>
-                          </>
-                        )}
+                        {messages.map((value, index) => (
+                            <Message key={index} data={value}/>
+                        ))}
+                        <FormChat data={dataForm}/>
+                        <Loader />
                 </div>
             </main>
         </Appstyle>
@@ -73,8 +48,19 @@ function Chat({ chat }) {
 export async function getServerSideProps({ query }) {
   const chatId = query.chtid
 
-  const res = await fetch(`${server}/api/chats/${chatId}`)
-  const chat = await res.json()
+  const chat = await fetch(`${server}/api/chats/${chatId}`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      chatId: chatId,
+      myUserId: '602f19110880daeef6955fa1'
+    })
+  })
+    .then(response => response.json())
+    .catch(error => console.log(error))
 
   return {
     props: {
