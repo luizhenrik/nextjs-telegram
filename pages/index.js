@@ -20,12 +20,12 @@ function Home() {
                 <Header></Header>
                 <Sidebar></Sidebar>
                 <div className={'app__container'}>
-                    <Loader />
                     <Link prefetch={false} as={'/chats'} href={'/chats'}>
                         <a className={'app__title'}>
                             Clique aqui para conectar no app
                         </a>
                     </Link>
+                    <Loader />
                 </div>
             </main>
         </Appstyle>

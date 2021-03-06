@@ -33,11 +33,10 @@ function ListConversations({ chats }) {
 
                 <Sidebar></Sidebar>
                 <div className={'app__container'}>
-                    <Loader />
-
                     {chats.map((value, index) => (
                         <ResumeUser key={index} data={value}></ResumeUser>
                     ))}
+                    <Loader />
                 </div>
             </main>
         </Appstyle>
