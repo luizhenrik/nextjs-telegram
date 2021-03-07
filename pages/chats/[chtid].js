@@ -25,10 +25,13 @@ const fetcher = async function (url, params) {
 
 function Chat({ chat, urlFetch, params }) {
   const { searchOpen } = useContext(GeneralContext)
-  const { data, error } = useSWR([urlFetch, params], fetcher, { chat })
+  const { data, error, isValidating, mutate } = useSWR([urlFetch, params], fetcher, {
+    initialData: chat,
+    refreshInterval: 1000
+  })
 
   if (error) return <div>failed to load</div>
-  if (!data) return <div>loading...</div>
+  if (!data) return <h1>Loading...</h1>
 
   return (
         <Appstyle>
