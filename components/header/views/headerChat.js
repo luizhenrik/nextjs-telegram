@@ -14,7 +14,7 @@ export default function HeaderChat({ data }) {
 
   return (
             <Headerstyle>
-                <Link prefetch={false} as={'/chats'} href={'/chats'}>
+                <Link as={'/chats'} href={'/chats'}>
                     <a className={'header__handler'}>
                         <span className={'fas fa-arrow-left'}></span>
                     </a>

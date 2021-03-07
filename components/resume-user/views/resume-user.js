@@ -20,7 +20,7 @@ export default function ResumeUser({ data }) {
 
   return (
         <Resumeuserstyle>
-            <Link prefetch={false} as={`/chats/${data.id}`} href={'/chats/[chtid]'}>
+            <Link as={`/chats/${data.id}`} href={'/chats/[chtid]'}>
                 <a className={'resume-user__content'}>
                     <Image
                     src={`https://xirrim.com/uploads/${data.userAvatar}`}
