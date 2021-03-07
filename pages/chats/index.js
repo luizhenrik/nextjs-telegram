@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import useSWR from 'swr'
 import React, { useContext } from 'react'
 import { server } from '../../config'
 
@@ -12,8 +13,21 @@ import Loader from '../../components/loader/views/loader'
 import { GeneralContext } from '../../contexts/general'
 import { Appstyle } from '../../styles/app'
 
-function ListConversations({ chats }) {
+const fetcher = async function (url, params) {
+  const res = await fetch(url, params)
+  const result = await res.json()
+  if (res.status !== 200) {
+    throw new Error(result.error)
+  }
+  return result
+}
+
+function ListConversations({ chats, urlFetch, params }) {
   const { searchOpen, headerDetailsOpen } = useContext(GeneralContext)
+  const { data, error } = useSWR([urlFetch, params], fetcher, { chats })
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   return (
         <Appstyle>
@@ -33,7 +47,7 @@ function ListConversations({ chats }) {
 
                 <Sidebar></Sidebar>
                 <div className={'app__container'}>
-                    {chats.map((value, index) => (
+                    {data.map((value, index) => (
                         <ResumeUser key={index} data={value}></ResumeUser>
                     ))}
                     <Loader />
@@ -43,8 +57,9 @@ function ListConversations({ chats }) {
   )
 }
 
-export async function getServerSideProps() {
-  const chats = await fetch(`${server}/api/chats`, {
+ListConversations.getInitialProps = async ({ query }) => {
+  const urlFetch = `${server}/api/chats`
+  const params = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -53,14 +68,13 @@ export async function getServerSideProps() {
     body: JSON.stringify({
       myUserId: '602f19110880daeef6955fa1'
     })
-  })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+  }
+  const chats = await fetcher(urlFetch, params)
 
   return {
-    props: {
-      chats: chats
-    }
+    chats,
+    urlFetch,
+    params
   }
 }
 

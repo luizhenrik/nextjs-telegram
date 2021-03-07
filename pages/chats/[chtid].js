@@ -12,32 +12,42 @@ import { GeneralContext } from '../../contexts/general'
 import { Appstyle } from '../../styles/app'
 import FormChat from '../../components/form-chat/views/form-chat'
 import Loader from '../../components/loader/views/loader'
+import useSWR from 'swr'
 
-function Chat({ chat }) {
-  const { searchOpen } = useContext(GeneralContext)
-
-  const messages = chat.messages
-
-  const dataForm = {
-    myUserId: chat.myUserId,
-    user_id: chat.userId,
-    chatId: chat.id
+const fetcher = async function (url, params) {
+  const res = await fetch(url, params)
+  const result = await res.json()
+  if (res.status !== 200) {
+    throw new Error(result.error)
   }
+  return result
+}
+
+function Chat({ chat, urlFetch, params }) {
+  const { searchOpen } = useContext(GeneralContext)
+  const { data, error } = useSWR([urlFetch, params], fetcher, { chat })
+
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
   return (
         <Appstyle>
             <Head>
-                <title>Conversa com {chat.username}</title>
+                <title>Conversa com {data.username}</title>
             </Head>
 
             <main className={'app__content'}>
-                    {searchOpen ? (<HeaderSearch></HeaderSearch>) : (<> <HeaderChat data={chat}></HeaderChat><Tooltip></Tooltip> </>)}
+                    {searchOpen ? (<HeaderSearch></HeaderSearch>) : (<> <HeaderChat data={data}></HeaderChat><Tooltip></Tooltip> </>)}
 
                 <div className={'app__container'}>
-                        {messages.map((value, index) => (
+                        {data.messages.map((value, index) => (
                             <Message key={index} data={value}/>
                         ))}
-                        <FormChat data={dataForm}/>
+                        <FormChat data={{
+                          myUserId: data.myUserId,
+                          user_id: data.userId,
+                          chatId: data.id
+                        }}/>
                         <Loader />
                 </div>
             </main>
@@ -45,10 +55,10 @@ function Chat({ chat }) {
   )
 }
 
-export async function getServerSideProps({ query }) {
+Chat.getInitialProps = async ({ query }) => {
   const chatId = query.chtid
-
-  const chat = await fetch(`${server}/api/chats/${chatId}`, {
+  const urlFetch = `${server}/api/chats/${chatId}`
+  const params = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -58,14 +68,14 @@ export async function getServerSideProps({ query }) {
       chatId: chatId,
       myUserId: '602f19110880daeef6955fa1'
     })
-  })
-    .then(response => response.json())
-    .catch(error => console.log(error))
+  }
+
+  const chat = await fetcher(urlFetch, params)
 
   return {
-    props: {
-      chat: chat
-    }
+    chat,
+    urlFetch,
+    params
   }
 }
 
